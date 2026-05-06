@@ -1186,7 +1186,7 @@ def start_workout_flow(message: str, user_id: int, session) -> str:
 
                 return ack_msg
 
-            exercises = get_workout_plan(goal, level, condition)
+            exercises = get_workout_plan(user_id, level, condition)
 
             session.reset()
             runtime_session["partial_workout_data"] = {}
@@ -1358,6 +1358,7 @@ def continue_workout_flow(message: str, user_id: int, session) -> str:
 
                 # Generate workout plan
                 exercises = get_workout_plan(
+                    user_id,
                     collected["goal"],
                     collected["level"],
                     collected["condition"]

@@ -3,7 +3,31 @@
 import json
 from typing import Dict, Any
 import os
+from ml_client import get_ml_workout_plan
 
+
+def get_workout_plan(user_id: int, goal: str, level: str, condition: str) -> list:
+    """
+    Get workout plan from JSON
+    ✅ Matches your Workouts.json structure
+    """
+    # ✅ Try ML first
+    ml_plan = get_ml_workout_plan(user_id, goal, level, condition)
+    if ml_plan:
+        return ml_plan
+
+    workouts = load_workouts()
+
+    try:
+        plan = workouts["goals"][goal][level][condition]
+        return plan
+    except KeyError as e:
+        print(
+            f"⚠️ Workout not found for: goal={goal}, level={level}, condition={condition}")
+        return []
+    except Exception as e:
+        print(f"⚠️ Error getting workout plan: {e}")
+        return []
 
 def load_workouts():
     """Load workouts from JSON file"""
