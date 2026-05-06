@@ -10956,5 +10956,5 @@ class FitnessApp(MDApp):
 
 if __name__ == "__main__":
     #migrate_exercises_json_to_db()
-    # migrate_json_to_db()
+    #migrate_json_to_db()
     FitnessApp().run()

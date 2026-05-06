@@ -192,9 +192,9 @@ class AuthTbl:
     def __init__(self):
         try:
             self.db = mysql.connector.connect(
-                host="localhost",
-                user="root",
-                passwd="BTA5EYVWLfWcebF",
+                host="fitnessgo-db.clyuqe48evd0.ap-southeast-1.rds.amazonaws.com",
+                user="fitnessgo",
+                passwd="easygroup123456",
                 port=3306,
                 database="fitnessgo"
             )
