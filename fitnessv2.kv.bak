@@ -82,224 +82,217 @@ WindowManager:
     id: button_screen
     md_bg_color: (0.902, 0.902, 0.902, 1)
 
-    MDScrollView:
-        do_scroll_x: False
+    MDBoxLayout:
+        padding: 20
+        orientation: "vertical"
 
-        MDBoxLayout:
-            orientation: "vertical"
-            padding: dp(20)
-            spacing: dp(20)
-            size_hint_y: None
-            height: self.minimum_height
+    Image:
+        source: "logo.png"
+        size_hint: None, None
+        width: "200dp"
+        height: "200dp"
+        pos_hint: {"center_x": .5, "center_y": .8}
 
-            Image:
-                source: "logo.png"
-                size_hint: None, None
-                width: "150dp"
-                height: "150dp"
-                pos_hint: {"center_x": 0.5}
+    MDLabel:
+        text: "Your Fitness Journey Starts Here.\n"
+        font_style: "Headline"
+        role: "large"
+        halign: "center"
+        theme_text_color: "Custom"
+        text_color: 0, 0, 0, 1
+        pos_hint: {"center_x": .5, "center_y": .5}
 
-            MDLabel:
-                text: "Your Fitness Journey Starts Here.\n"
-                font_style: "Headline"
-                role: "large"
-                halign: "center"
-                theme_text_color: "Custom"
-                text_color: 0, 0, 0, 1
-                size_hint_y: None
-                height: self.texture_size[1] + dp(10)
+    MDLabel:
+        text: "Log in as:"
+        font_style: "Title"
+        role: "large"
+        halign: "center"
+        theme_text_color: "Custom"
+        text_color: 0, 0, 0, 1
+        pos_hint: {"center_x": .5, "center_y": .4}
 
-            MDLabel:
-                text: "Log in as:"
-                font_style: "Title"
-                role: "large"
-                halign: "center"
-                theme_text_color: "Custom"
-                text_color: 0, 0, 0, 1
-                size_hint_y: None
-                height: self.texture_size[1] + dp(10)
+    MDButton:
+        id: new_btn
+        style: "elevated"
+        theme_width: "Custom"
+        height: "50dp"
+        size_hint_x: .5
+        pos_hint: {"center_x": .5, "center_y": .3}
+        on_release:
+            root.manager.transition.direction = "fade"
+            app.root.current = "login_screen"
 
-            MDButton:
-                id: new_btn
-                style: "elevated"
-                theme_width: "Custom"
-                height: "50dp"
-                size_hint_x: .5
-                pos_hint: {"center_x": .5}
-                on_release:
-                    root.manager.transition.direction = "fade"
-                    app.root.current = "login_screen"
 
-                MDButtonText:
-                    id: new_text
-                    text: "Student"
-                    pos_hint: {"center_x": .5, "center_y": .5}
+        MDButtonText:
+            id: new_text
+            text: "Student"
+            pos_hint: {"center_x": .5, "center_y": .5}
 
-            MDButton:
-                id: create_btn
-                style: "elevated"
-                theme_width: "Custom"
-                height: "50dp"
-                size_hint_x: .5
-                pos_hint: {"center_x": .5}
-                on_release:
-                    root.manager.transition.direction = "fade"
-                    app.root.current = "admin_login_screen"
+    MDButton:
+        id: create_btn
+        style: "elevated"
+        theme_width: "Custom"
+        height: "50dp"
+        size_hint_x: .5
+        pos_hint: {"center_x": .5, "center_y": .2}
+        on_release:
+            root.manager.transition.direction = "fade"
+            app.root.current = "admin_login_screen"
 
-                MDButtonText:
-                    id: create_text
-                    text: "Admin"
-                    pos_hint: {"center_x": .5, "center_y": .5}
+        MDButtonText:
+            id: create_text
+            text: "Admin"
+            pos_hint: {"center_x": .5, "center_y": .5}
+
 
 <loginScreen>:
     name: "login_screen"
     id: login_screen
     md_bg_color: (0.902, 0.902, 0.902, 1)
 
-    MDScrollView:
-        do_scroll_x: False
+    MDBoxLayout:
+        padding: 20
+        orientation: "vertical"
 
-        MDBoxLayout:
-            orientation: "vertical"
-            padding: dp(20)
-            spacing: dp(16)
-            size_hint_y: None
-            height: self.minimum_height
+    Image:
+        source: "logo.png"
+        size_hint: None, None
+        width: "200dp"
+        height: "200dp"
+        pos_hint: {"center_x": .5, "center_y": .8}
 
-            Image:
-                source: "logo.png"
-                size_hint: None, None
-                width: "150dp"
-                height: "150dp"
-                pos_hint: {"center_x": 0.5}
+    MDLabel:
+        text: "Fitness Go"
+        font_style: "Display"
+        role: "medium"
+        halign: "center"
+        theme_text_color: "Custom"
+        text_color: 0, 0, 0, 1
+        pos_hint: {"center_x": .5, "center_y": .58}
 
-            MDLabel:
-                text: "Fitness Go"
-                font_style: "Display"
-                role: "medium"
-                halign: "center"
-                theme_text_color: "Custom"
-                text_color: 0, 0, 0, 1
-                size_hint_y: None
-                height: self.texture_size[1] + dp(10)
+    MDLabel:
+        text: "Username: "
+        font_style: "Title"
+        role: "small"
+        halign: "center"
+        theme_text_color: "Custom"
+        text_color: 0, 0, 0, 1
+        pos_hint: {"center_x": .18, "center_y": .53}
 
-            MDLabel:
-                text: "Username: "
-                font_style: "Title"
-                role: "small"
-                halign: "center"
-                theme_text_color: "Custom"
-                text_color: 0, 0, 0, 1
-                size_hint_y: None
-                height: self.texture_size[1] + dp(5)
+    MDTextField:
+        id: username_field
+        mode: "outlined"
+        size_hint_x: None
+        width: "300dp"
+        radius: [30, 30, 30, 30]
+        pos_hint: {"center_x": .5, "center_y": .46}
 
-            MDTextField:
-                id: username_field
-                mode: "outlined"
-                size_hint_x: 0.9
-                pos_hint: {"center_x": 0.5}
-                radius: [30, 30, 30, 30]
-                md_bg_color: 0.98, 1, 0.98, 1
-                line_color_normal: 0, 0, 0, 0
-                line_color_focus: 0, 0, 0, 0
-                text_color_normal: 0, 0, 0, 1
-                text_color_focus: 0, 0, 0, 1
+        md_bg_color: 0.98, 1, 0.98, 1
+        line_color_normal: 0, 0, 0, 0
+        line_color_focus: 0, 0, 0, 0
+        text_color_normal: 0, 0, 0, 1
+        text_color_focus: 0, 0, 0, 1
 
-                # ✅ canvas.after MUST come before child widgets
-                canvas.after:
-                    Color:
-                        rgba: 0, 0.8, 0, 1
-                    Line:
-                        width: 2.5
-                        rounded_rectangle: (self.x, self.y, self.width, self.height, 30)
+        # ✅ canvas.after MUST come before child widgets
+        canvas.after:
+            Color:
+                rgba: 0, 0.8, 0, 1
+            Line:
+                width: 2.5
+                rounded_rectangle: (self.x, self.y, self.width, self.height, 30)
 
-                MDTextFieldTrailingIcon:
-                    icon: "account"
-                    theme_icon_color: "Custom"
-                    icon_color_normal: 0, 0.8, 0, 1   # green when unfocused
-                    icon_color_focus: 0, 0.8, 0, 1
+        MDTextFieldTrailingIcon:
+            icon: "account"
+            theme_icon_color: "Custom"
+            icon_color_normal: 0, 0.8, 0, 1   # green when unfocused
+            icon_color_focus: 0, 0.8, 0, 1
 
-            MDLabel:
-                text: "Password: "
-                font_style: "Title"
-                role: "small"
-                halign: "center"
-                theme_text_color: "Custom"
-                text_color: 0, 0, 0, 1
-                size_hint_y: None
-                height: self.texture_size[1] + dp(5)
 
-            MDBoxLayout:
-                orientation: "horizontal"
-                size_hint_x: 0.9
-                pos_hint: {"center_x": 0.5}
-                size_hint_y: None
-                height: dp(56)
-                spacing: dp(4)
+    MDLabel:
+        text: "Password: "
+        font_style: "Title"
+        role: "small"
+        halign: "center"
+        theme_text_color: "Custom"
+        text_color: 0, 0, 0, 1
+        pos_hint: {"center_x": .18, "center_y": .39}
 
-                MDTextField:
-                    id: password_field
-                    mode: "outlined"
-                    size_hint_x: 1
-                    password_mask: "•"
-                    radius: [30, 30, 30, 30]
-                    password: True
-                    md_bg_color: 0.98, 1, 0.98, 1
-                    line_color_normal: 0, 0, 0, 0
-                    line_color_focus: 0, 0, 0, 0
-                    text_color_normal: 0, 0, 0, 1
-                    text_color_focus: 0, 0, 0, 1
+    MDTextField:
+        id: password_field
+        mode: "outlined"
+        size_hint_x: None
+        width: "300dp"
+        pos_hint: {"center_x": .5, "center_y": .32}
+        password_mask: "•"
+        radius: [30, 30, 30, 30]
+        password: True
+        md_bg_color: 0.98, 1, 0.98, 1
+        line_color_normal: 0, 0, 0, 0
+        line_color_focus: 0, 0, 0, 0
+        text_color_normal: 0, 0, 0, 1
+        text_color_focus: 0, 0, 0, 1
 
-                    canvas.after:
-                        Color:
-                            rgba: 0, 0.8, 0, 1
-                        Line:
-                            width: 2.5
-                            rounded_rectangle: (self.x, self.y, self.width, self.height, 30)
+        canvas.after:
+            Color:
+                rgba: 0, 0.8, 0, 1
+            Line:
+                width: 2.5
+                rounded_rectangle: (self.x, self.y, self.width, self.height, 30)
 
-                MDIconButton:
-                    id: login_eye_icon
-                    icon: "eye-off"
-                    size_hint: None, None
-                    size: "32dp", "32dp"
-                    pos_hint: {"center_y": 0.5}
-                    theme_icon_color: "Custom"
-                    icon_color: 0, 0.639, 0, 1
-                    on_release:
-                        root.toggle_password_visibility(password_field, self)
+    MDIconButton:
+        id: login_eye_icon
+        icon: "eye-off"
+        size_hint: None, None
+        size: "32dp", "32dp"
+        pos_hint: {"center_x": 0.83, "center_y": 0.32} # 🔑 alignment fix
+        theme_icon_color: "Custom"
+        icon_color: 0, 0.639, 0, 1
+        on_release:
+            root.toggle_password_visibility(password_field, self)
 
-            MDButton:
-                style: "text"
-                theme_text_color: "Custom"
-                text_color: 0, 0.6, 0, 1
-                halign: "left"
-                valign: "middle"
-                text_size: self.size
-                on_release: root.open_forgot_password_dialog()
+    # Show Password Checkbox
+    BoxLayout:
+        size_hint_x: None
+        width: "240dp"
+        height: "40dp"
+        pos_hint: {"center_x": .40, "center_y": .20}
+        spacing: 10
+        orientation: "horizontal"
 
-                MDButtonText:
-                    text: "Forgot Password"
+        MDButton:
+            style: "text"
+            theme_text_color: "Custom"
+            text_color: 0, 0.6, 0, 1
+            halign: "left"
+            valign: "middle"
+            text_size: self.size
+            on_release: root.open_forgot_password_dialog()
 
-            MDButton:
-                id: login_button
-                style: "filled"
-                pos_hint: {"center_x": 0.5}
-                on_release:
-                    root.manager.transition.direction = "fade"
-                    root.login_user()
+            pos_hint: {"center_x": .10, "center_y": .55}
 
-                MDButtonText:
-                    text: "Log In"
+            MDButtonText:
+                text: "Forgot Password"
 
-            MDButton:
-                style: "outlined"
-                pos_hint: {"center_x": 0.5}
-                on_release:
-                    root.manager.transition.direction = "fade"
-                    root.open_signup()
+    MDButton:
+        id: login_button
+        style: "filled"
+        pos_hint: {"center_x": .5, "center_y": .18}
+        on_release:
+            root.manager.transition.direction = "fade"
+            root.login_user()
 
-                MDButtonText:
-                    text: "Create New Account"
+        MDButtonText:
+            text: "Log In"
+
+    MDButton:
+        style: "outlined"
+        pos_hint: {"center_x": .5, "center_y": .1}
+        on_release:
+            root.manager.transition.direction = "fade"
+            root.open_signup()
+
+        MDButtonText:
+            text: "Create New Account"
 
 <SignupTermsScreen>:
     name: "signup_terms_screen"
@@ -474,748 +467,647 @@ WindowManager:
     id: signup_screen
     md_bg_color: (0.902, 0.902, 0.902, 1)
 
-    MDScrollView:
-        do_scroll_x: False
+    MDBoxLayout:
+        padding: 20
+        orientation: "vertical"
 
-        MDBoxLayout:
-            orientation: "vertical"
-            padding: dp(20)
-            spacing: dp(16)
-            size_hint_y: None
-            height: self.minimum_height
 
-            MDBoxLayout:
-                orientation: "horizontal"
-                size_hint_y: None
-                height: dp(70)
-                spacing: dp(10)
+    MDLabel:
+        text: "Fitness Go"
+        font_style: "Headline"
+        role: "medium"
+        halign: "center"
+        theme_text_color: "Custom"
+        text_color: 0, 0, 0, 1
 
-                Image:
-                    source: "logo.png"
-                    size_hint: None, None
-                    width: "60dp"
-                    height: "60dp"
-                    pos_hint: {"center_y": 0.5}
+        pos_hint: {"center_x": .40, "center_y": .90}
 
-                MDLabel:
-                    text: "Fitness Go"
-                    font_style: "Headline"
-                    role: "medium"
-                    halign: "left"
-                    theme_text_color: "Custom"
-                    text_color: 0, 0, 0, 1
-                    pos_hint: {"center_y": 0.5}
+    Image:
+        source: "logo.png"
+        size_hint: None, None
+        width: "80dp"
+        height: "80dp"
+        pos_hint: {"center_x": .12, "center_y": .92}
 
-            MDLabel:
-                text: "Tell us more about yourself"
-                font_style: "Headline"
-                role: "small"
-                halign: "center"
+    MDLabel:
+        text: "Tell us more about yourself"
+        font_style: "Headline"
+        role: "small"
+        halign: "center"
+        theme_text_color: "Custom"
+        text_color: 0, 0, 0, 1
+        bold: True
+        pos_hint: {"center_x": .50, "center_y": .80}
+
+    MDLabel:
+        text: "To give you better experience and result"
+        font_style: "Title"
+        role: "medium"
+        halign: "center"
+        theme_text_color: "Custom"
+        text_color: 0, 0, 0, 1
+        pos_hint: {"center_x": .50, "center_y": .75}
+
+
+    MDLabel:
+        text: "Full Name: "
+        font_style: "Title"
+        role: "small"
+        halign: "center"
+        theme_text_color: "Custom"
+        text_color: 0, 0, 0, 1
+        pos_hint: {"center_x": .15, "center_y": .67}
+
+    MDTextField:
+        id: fullname_field
+        mode: "outlined"                   # valid mode
+        size_hint_x: None
+        width: "320dp"
+        radius: [30, 30, 30, 30]
+        pos_hint: {"center_x": .50, "center_y": .60}
+
+        md_bg_color: 0.98, 1, 0.98, 1      # light background
+        line_color_normal: 0, 0, 0, 0      # hide KivyMD's own outline
+        line_color_focus: 0, 0, 0, 0
+
+        text_color_normal: 0, 0, 0, 1
+        text_color_focus: 0, 0, 0, 1
+
+        canvas.after:
+            Color:
+                rgba: 0, 0.8, 0, 1         # green border
+            Line:
+                width: 2.5
+                rounded_rectangle: (self.x, self.y, self.width, self.height, 30)
+
+    MDLabel:
+        text: "Age: "
+        font_style: "Title"
+        role: "small"
+        halign: "center"
+        theme_text_color: "Custom"
+        text_color: 0, 0, 0, 1
+        pos_hint: {"center_x": .11, "center_y": .51}
+
+    MDTextField:
+        id: age_field
+        mode: "outlined"
+        size_hint_x: None
+        width: "100dp"
+        radius: [30, 30, 30, 30]
+        pos_hint: {"center_x": .21, "center_y": .44}
+
+        md_bg_color: 0.98, 1, 0.98, 1
+        line_color_normal: 0, 0, 0, 0
+        line_color_focus: 0, 0, 0, 0
+        text_color_normal: 0, 0, 0, 1
+        text_color_focus: 0, 0, 0, 1
+
+        canvas.after:
+            Color:
+                rgba: 0, 0.8, 0, 1
+            Line:
+                width: 2.5
+                rounded_rectangle: (self.x, self.y, self.width, self.height, 30)
+
+    # GENDER SELECTION
+    MDLabel:
+        text: "Gender: "
+        font_style: "Title"
+        role: "small"
+        halign: "center"
+        theme_text_color: "Custom"
+        text_color: 0, 0, 0, 1
+        pos_hint: {"center_x": .43, "center_y": .51}
+
+    BoxLayout:
+        id: gender_box
+        orientation: "horizontal"
+        spacing: "5dp"
+        size_hint: None, None
+        width: "150dp"
+        height: "65dp"
+        pos_hint: {"center_x": .58, "center_y": .46}
+
+        # FEMALE BUTTON
+        MDButton:
+            id: female_btn
+            style: "filled"
+            theme_bg_color: "Custom"
+            radius: [30, 30, 30, 30]
+            md_bg_color: 0.40, 0.84, 0.40, 1   # default gray
+            on_release:
+                male_btn.md_bg_color = 0.40, 0.84, 0.40, 1  # unselect other
+                self.md_bg_color = 0, 0.7, 0, 1          # selected green
+                root.selected_gender = "Female"
+
+            MDButtonIcon:
+                icon: "gender-female"
+                theme_icon_color: "Custom"
+                icon_color: 1, 1, 1, 1
+
+            MDButtonText:
+                text: "Female"
                 theme_text_color: "Custom"
-                text_color: 0, 0, 0, 1
-                bold: True
-                size_hint_y: None
-                height: self.texture_size[1] + dp(5)
+                text_color: 1, 1, 1, 1
 
-            MDLabel:
-                text: "To give you better experience and result"
-                font_style: "Title"
-                role: "medium"
-                halign: "center"
+        # MALE BUTTON
+        MDButton:
+            id: male_btn
+            style: "filled"
+            theme_bg_color: "Custom"
+            radius: [30, 30, 30, 30]
+            md_bg_color: 0.40, 0.84, 0.40, 1   # default
+            on_release:
+                female_btn.md_bg_color = 0.40, 0.84, 0.40, 1  # unselect other
+                self.md_bg_color = 0, 0.7, 0, 1            # selected green
+                root.selected_gender = "Male"
+
+            MDButtonIcon:
+                icon: "gender-male"
+                theme_icon_color: "Custom"
+                icon_color: 1, 1, 1, 1
+
+            MDButtonText:
+                text: "Male"
                 theme_text_color: "Custom"
-                text_color: 0, 0, 0, 1
-                size_hint_y: None
-                height: self.texture_size[1] + dp(5)
+                text_color: 1, 1, 1, 1
 
-            MDLabel:
-                text: "Full Name: "
-                font_style: "Title"
-                role: "small"
-                halign: "center"
-                theme_text_color: "Custom"
-                text_color: 0, 0, 0, 1
-                size_hint_y: None
-                height: self.texture_size[1] + dp(5)
+    MDLabel:
+        text: "Weight: "
+        font_style: "Title"
+        role: "small"
+        halign: "center"
+        theme_text_color: "Custom"
+        text_color: 0, 0, 0, 1
+        pos_hint: {"center_x": .14, "center_y": .35}
 
-            MDTextField:
-                id: fullname_field
-                mode: "outlined"                   # valid mode
-                size_hint_x: 0.9
-                pos_hint: {"center_x": 0.5}
-                radius: [30, 30, 30, 30]
-                md_bg_color: 0.98, 1, 0.98, 1      # light background
-                line_color_normal: 0, 0, 0, 0      # hide KivyMD's own outline
-                line_color_focus: 0, 0, 0, 0
-                text_color_normal: 0, 0, 0, 1
-                text_color_focus: 0, 0, 0, 1
+    MDTextField:
+        id: weight_field
+        mode: "outlined"
+        size_hint_x: None
+        width: "90dp"
+        radius: [30, 30, 30, 30]
+        pos_hint: {"center_x": .21, "center_y": .28}
 
-                canvas.after:
-                    Color:
-                        rgba: 0, 0.8, 0, 1         # green border
-                    Line:
-                        width: 2.5
-                        rounded_rectangle: (self.x, self.y, self.width, self.height, 30)
+        md_bg_color: 0.98, 1, 0.98, 1
+        line_color_normal: 0, 0, 0, 0
+        line_color_focus: 0, 0, 0, 0
+        text_color_normal: 0, 0, 0, 1
+        text_color_focus: 0, 0, 0, 1
 
-            MDBoxLayout:
-                orientation: "horizontal"
-                size_hint_x: 0.9
-                pos_hint: {"center_x": 0.5}
-                size_hint_y: None
-                height: dp(90)
-                spacing: dp(10)
+        canvas.after:
+            Color:
+                rgba: 0, 0.8, 0, 1
+            Line:
+                width: 2.5
+                rounded_rectangle: (self.x, self.y, self.width, self.height, 30)
 
-                MDBoxLayout:
-                    orientation: "vertical"
-                    spacing: dp(4)
+    MDLabel:
+        text: "kg"
+        font_style: "Title"
+        role: "small"
+        halign: "center"
+        theme_text_color: "Custom"
+        text_color: 0, 0, 0, 1
+        pos_hint: {"center_x": .38, "center_y": .28}
 
-                    MDLabel:
-                        text: "Age: "
-                        font_style: "Title"
-                        role: "small"
-                        halign: "center"
-                        theme_text_color: "Custom"
-                        text_color: 0, 0, 0, 1
-                        size_hint_y: None
-                        height: self.texture_size[1] + dp(5)
 
-                    MDTextField:
-                        id: age_field
-                        mode: "outlined"
-                        size_hint_x: 1
-                        radius: [30, 30, 30, 30]
-                        md_bg_color: 0.98, 1, 0.98, 1
-                        line_color_normal: 0, 0, 0, 0
-                        line_color_focus: 0, 0, 0, 0
-                        text_color_normal: 0, 0, 0, 1
-                        text_color_focus: 0, 0, 0, 1
+    MDLabel:
+        text: "Height: "
+        font_style: "Title"
+        role: "small"
+        halign: "center"
+        theme_text_color: "Custom"
+        text_color: 0, 0, 0, 1
+        pos_hint: {"center_x": .52, "center_y": .35}
 
-                        canvas.after:
-                            Color:
-                                rgba: 0, 0.8, 0, 1
-                            Line:
-                                width: 2.5
-                                rounded_rectangle: (self.x, self.y, self.width, self.height, 30)
+    MDTextField:
+        id: height_field
+        mode: "outlined"
+        size_hint_x: None
+        width: "90dp"
+        radius: [30, 30, 30, 30]
+        pos_hint: {"center_x": .60, "center_y": .28}
 
-                MDBoxLayout:
-                    orientation: "vertical"
-                    spacing: dp(4)
+        md_bg_color: 0.98, 1, 0.98, 1
+        line_color_normal: 0, 0, 0, 0
+        line_color_focus: 0, 0, 0, 0
+        text_color_normal: 0, 0, 0, 1
+        text_color_focus: 0, 0, 0, 1
 
-                    MDLabel:
-                        text: "Gender: "
-                        font_style: "Title"
-                        role: "small"
-                        halign: "center"
-                        theme_text_color: "Custom"
-                        text_color: 0, 0, 0, 1
-                        size_hint_y: None
-                        height: self.texture_size[1] + dp(5)
+        canvas.after:
+            Color:
+                rgba: 0, 0.8, 0, 1
+            Line:
+                width: 2.5
+                rounded_rectangle: (self.x, self.y, self.width, self.height, 30)
 
-                    BoxLayout:
-                        id: gender_box
-                        orientation: "horizontal"
-                        spacing: "5dp"
-                        size_hint_y: None
-                        height: "65dp"
+    MDLabel:
+        text: "cm"
+        font_style: "Title"
+        role: "small"
+        halign: "center"
+        theme_text_color: "Custom"
+        text_color: 0, 0, 0, 1
+        pos_hint: {"center_x": .77, "center_y": .28}
 
-                        # FEMALE BUTTON
-                        MDButton:
-                            id: female_btn
-                            style: "filled"
-                            theme_bg_color: "Custom"
-                            radius: [30, 30, 30, 30]
-                            md_bg_color: 0.40, 0.84, 0.40, 1   # default gray
-                            on_release:
-                                male_btn.md_bg_color = 0.40, 0.84, 0.40, 1  # unselect other
-                                self.md_bg_color = 0, 0.7, 0, 1          # selected green
-                                root.selected_gender = "Female"
+    MDButton:
+        style: "filled"
+        halign: "center"
+        pos_hint: {"center_x": .75, "center_y": .15}
+        radius: [20, 20, 20, 20]
+        on_release:
+            root.validate_and_continue()
 
-                            MDButtonIcon:
-                                icon: "gender-female"
-                                theme_icon_color: "Custom"
-                                icon_color: 1, 1, 1, 1
+        MDButtonText:
+            text: "Continue"
+            font_style: "Title"
+            role: "large"
 
-                            MDButtonText:
-                                text: "Female"
-                                theme_text_color: "Custom"
-                                text_color: 1, 1, 1, 1
+    MDButton:
+        style: "text"
+        theme_text_color: "Custom"
+        text_color: 0, 0.6, 0, 1
+        halign: "center"
+        valign: "middle"
+        text_size: self.size
+        pos_hint: {"center_x": .50, "center_y": .06}
+        on_release:
+            root.manager.transition.direction = "fade"
+            app.root.current = "login_screen"
 
-                        # MALE BUTTON
-                        MDButton:
-                            id: male_btn
-                            style: "filled"
-                            theme_bg_color: "Custom"
-                            radius: [30, 30, 30, 30]
-                            md_bg_color: 0.40, 0.84, 0.40, 1   # default
-                            on_release:
-                                female_btn.md_bg_color = 0.40, 0.84, 0.40, 1  # unselect other
-                                self.md_bg_color = 0, 0.7, 0, 1            # selected green
-                                root.selected_gender = "Male"
+        MDButtonText:
+            text: "Already have an account?"
 
-                            MDButtonIcon:
-                                icon: "gender-male"
-                                theme_icon_color: "Custom"
-                                icon_color: 1, 1, 1, 1
-
-                            MDButtonText:
-                                text: "Male"
-                                theme_text_color: "Custom"
-                                text_color: 1, 1, 1, 1
-
-            MDBoxLayout:
-                orientation: "horizontal"
-                size_hint_x: 0.9
-                pos_hint: {"center_x": 0.5}
-                size_hint_y: None
-                height: dp(90)
-                spacing: dp(10)
-
-                MDBoxLayout:
-                    orientation: "vertical"
-                    spacing: dp(4)
-
-                    MDLabel:
-                        text: "Weight: "
-                        font_style: "Title"
-                        role: "small"
-                        halign: "center"
-                        theme_text_color: "Custom"
-                        text_color: 0, 0, 0, 1
-                        size_hint_y: None
-                        height: self.texture_size[1] + dp(5)
-
-                    MDBoxLayout:
-                        orientation: "horizontal"
-                        spacing: dp(4)
-                        size_hint_y: None
-                        height: dp(56)
-
-                        MDTextField:
-                            id: weight_field
-                            mode: "outlined"
-                            size_hint_x: 1
-                            radius: [30, 30, 30, 30]
-                            md_bg_color: 0.98, 1, 0.98, 1
-                            line_color_normal: 0, 0, 0, 0
-                            line_color_focus: 0, 0, 0, 0
-                            text_color_normal: 0, 0, 0, 1
-                            text_color_focus: 0, 0, 0, 1
-
-                            canvas.after:
-                                Color:
-                                    rgba: 0, 0.8, 0, 1
-                                Line:
-                                    width: 2.5
-                                    rounded_rectangle: (self.x, self.y, self.width, self.height, 30)
-
-                        MDLabel:
-                            text: "kg"
-                            font_style: "Title"
-                            role: "small"
-                            halign: "center"
-                            theme_text_color: "Custom"
-                            text_color: 0, 0, 0, 1
-                            size_hint_x: None
-                            width: dp(30)
-
-                MDBoxLayout:
-                    orientation: "vertical"
-                    spacing: dp(4)
-
-                    MDLabel:
-                        text: "Height: "
-                        font_style: "Title"
-                        role: "small"
-                        halign: "center"
-                        theme_text_color: "Custom"
-                        text_color: 0, 0, 0, 1
-                        size_hint_y: None
-                        height: self.texture_size[1] + dp(5)
-
-                    MDBoxLayout:
-                        orientation: "horizontal"
-                        spacing: dp(4)
-                        size_hint_y: None
-                        height: dp(56)
-
-                        MDTextField:
-                            id: height_field
-                            mode: "outlined"
-                            size_hint_x: 1
-                            radius: [30, 30, 30, 30]
-                            md_bg_color: 0.98, 1, 0.98, 1
-                            line_color_normal: 0, 0, 0, 0
-                            line_color_focus: 0, 0, 0, 0
-                            text_color_normal: 0, 0, 0, 1
-                            text_color_focus: 0, 0, 0, 1
-
-                            canvas.after:
-                                Color:
-                                    rgba: 0, 0.8, 0, 1
-                                Line:
-                                    width: 2.5
-                                    rounded_rectangle: (self.x, self.y, self.width, self.height, 30)
-
-                        MDLabel:
-                            text: "cm"
-                            font_style: "Title"
-                            role: "small"
-                            halign: "center"
-                            theme_text_color: "Custom"
-                            text_color: 0, 0, 0, 1
-                            size_hint_x: None
-                            width: dp(30)
-
-            MDBoxLayout:
-                orientation: "horizontal"
-                size_hint_y: None
-                height: "60dp"
-                spacing: dp(20)
-                size_hint_x: 0.9
-                pos_hint: {"center_x": 0.5}
-
-                MDButton:
-                    style: "text"
-                    theme_text_color: "Custom"
-                    text_color: 0, 0.6, 0, 1
-                    halign: "center"
-                    valign: "middle"
-                    text_size: self.size
-                    on_release:
-                        root.manager.transition.direction = "fade"
-                        app.root.current = "login_screen"
-
-                    MDButtonText:
-                        text: "Already have an account?"
-
-                MDButton:
-                    style: "filled"
-                    halign: "center"
-                    radius: [20, 20, 20, 20]
-                    on_release:
-                        root.validate_and_continue()
-
-                    MDButtonText:
-                        text: "Continue"
-                        font_style: "Title"
-                        role: "large"
 
 <signupScreen2>
     name: "signup_screen2"
     id: signup_screen2
     md_bg_color: (0.902, 0.902, 0.902, 1)
 
-    MDScrollView:
-        do_scroll_x: False
+    MDBoxLayout:
+        padding: 20
+        orientation: "vertical"
 
-        MDBoxLayout:
-            orientation: "vertical"
-            padding: dp(20)
-            spacing: dp(16)
-            size_hint_y: None
-            height: self.minimum_height
 
-            MDBoxLayout:
-                orientation: "horizontal"
-                size_hint_y: None
-                height: dp(70)
-                spacing: dp(10)
+    MDLabel:
+        text: "Fitness Go"
+        font_style: "Headline"
+        role: "medium"
+        halign: "center"
+        theme_text_color: "Custom"
+        text_color: 0, 0, 0, 1
 
-                Image:
-                    source: "logo.png"
-                    size_hint: None, None
-                    width: "60dp"
-                    height: "60dp"
-                    pos_hint: {"center_y": 0.5}
+        pos_hint: {"center_x": .40, "center_y": .90}
 
-                MDLabel:
-                    text: "Fitness Go"
-                    font_style: "Headline"
-                    role: "medium"
-                    halign: "left"
-                    theme_text_color: "Custom"
-                    text_color: 0, 0, 0, 1
-                    pos_hint: {"center_y": 0.5}
+    Image:
+        source: "logo.png"
+        size_hint: None, None
+        width: "80dp"
+        height: "80dp"
+        pos_hint: {"center_x": .12, "center_y": .92}
 
-            MDLabel:
-                text: "What is your activity level?"
+    MDLabel:
+        text: "What is your activity level?"
+        font_style: "Headline"
+        role: "small"
+        halign: "center"
+        theme_text_color: "Custom"
+        text_color: 0, 0, 0, 1
+        bold: True
+        pos_hint: {"center_x": .50, "center_y": .80}
+
+    BoxLayout:
+        orientation: "vertical"
+        spacing: "20dp"
+        size_hint: None, None
+        width: "420dp"
+        height: "60dp"
+        pos_hint: {"center_x": .75, "center_y": .33}
+
+        # ACTIVE BUTTON
+        MDButton:
+            id: active_btn
+            style: "filled"
+            theme_bg_color: "Custom"
+            radius: [30, 30, 30, 30]
+            size_hint_x: None
+            width: "420dp"
+            height: "60dp"
+            md_bg_color: 0.40, 0.84, 0.40, 1   # default
+            on_release:
+                active_btn.md_bg_color = 0, 0.7, 0, 1
+                not_active_btn.md_bg_color = 0.40, 0.84, 0.40, 1   # default
+                lightly_active_btn.md_bg_color = 0.40, 0.84, 0.40, 1   # default
+                very_active_btn.md_bg_color = 0.40, 0.84, 0.40, 1   # default
+                root.selected_activitylevel = "Active"
+
+            MDButtonText:
+                text: "         Active          "
+                theme_text_color: "Custom"
+                text_color: 1, 1, 1, 1
                 font_style: "Headline"
                 role: "small"
-                halign: "center"
+
+        # NOT VERY ACTIVE BUTTON
+        MDButton:
+            id: not_active_btn
+            style: "filled"
+            theme_bg_color: "Custom"
+            radius: [30, 30, 30, 30]
+            width: "420dp"
+            height: "60dp"
+            md_bg_color: 0.40, 0.84, 0.40, 1   # default
+            on_release:
+                active_btn.md_bg_color = 0.40, 0.84, 0.40, 1   # default
+                not_active_btn.md_bg_color = 0, 0.7, 0, 1
+                lightly_active_btn.md_bg_color = 0.40, 0.84, 0.40, 1   # default
+                very_active_btn.md_bg_color = 0.40, 0.84, 0.40, 1   # default
+                root.selected_activitylevel = "Not Very Active"
+
+            MDButtonText:
+                text: " Not Very Active "
                 theme_text_color: "Custom"
-                text_color: 0, 0, 0, 1
-                bold: True
-                size_hint_y: None
-                height: self.texture_size[1] + dp(10)
+                text_color: 1, 1, 1, 1
+                font_style: "Headline"
+                role: "small"
 
-            MDBoxLayout:
-                orientation: "vertical"
-                spacing: dp(12)
-                size_hint_x: 0.9
-                size_hint_y: None
-                height: self.minimum_height
-                pos_hint: {"center_x": 0.5}
+        # LIGHTLY ACTIVE BUTTON
+        MDButton:
+            id: lightly_active_btn
+            style: "filled"
+            theme_bg_color: "Custom"
+            radius: [30, 30, 30, 30]
+            width: "420dp"
+            height: "60dp"
+            md_bg_color: 0.40, 0.84, 0.40, 1   # default
+            on_release:
+                active_btn.md_bg_color = 0.40, 0.84, 0.40, 1   # default
+                not_active_btn.md_bg_color = 0.40, 0.84, 0.40, 1   # default
+                lightly_active_btn.md_bg_color = 0, 0.7, 0, 1
+                very_active_btn.md_bg_color = 0.40, 0.84, 0.40, 1   # default
+                root.selected_activitylevel = "Lightly Active"
 
-                # ACTIVE BUTTON
-                MDButton:
-                    id: active_btn
-                    style: "filled"
-                    theme_bg_color: "Custom"
-                    radius: [30, 30, 30, 30]
-                    theme_width: "Custom"
-                    size_hint_x: 1
-                    height: "60dp"
-                    md_bg_color: 0.40, 0.84, 0.40, 1   # default
-                    on_release:
-                        active_btn.md_bg_color = 0, 0.7, 0, 1
-                        not_active_btn.md_bg_color = 0.40, 0.84, 0.40, 1   # default
-                        lightly_active_btn.md_bg_color = 0.40, 0.84, 0.40, 1   # default
-                        very_active_btn.md_bg_color = 0.40, 0.84, 0.40, 1   # default
-                        root.selected_activitylevel = "Active"
+            MDButtonText:
+                text: "   Lightly Active   "
+                theme_text_color: "Custom"
+                text_color: 1, 1, 1, 1
+                font_style: "Headline"
+                role: "small"
 
-                    MDButtonText:
-                        text: "         Active          "
-                        theme_text_color: "Custom"
-                        text_color: 1, 1, 1, 1
-                        font_style: "Headline"
-                        role: "small"
+        # VERY ACTIVE BUTTON
+        MDButton:
+            id: very_active_btn
+            style: "filled"
+            theme_bg_color: "Custom"
+            radius: [30, 30, 30, 30]
+            width: "420dp"
+            height: "60dp"
+            md_bg_color: 0.40, 0.84, 0.40, 1   # default
+            on_release:
+                active_btn.md_bg_color = 0.40, 0.84, 0.40, 1   # default
+                not_active_btn.md_bg_color = 0.40, 0.84, 0.40, 1   # default
+                lightly_active_btn.md_bg_color = 0.40, 0.84, 0.40, 1   # default
+                very_active_btn.md_bg_color = 0, 0.7, 0, 1
+                root.selected_activitylevel = "Very Active"
 
-                # NOT VERY ACTIVE BUTTON
-                MDButton:
-                    id: not_active_btn
-                    style: "filled"
-                    theme_bg_color: "Custom"
-                    radius: [30, 30, 30, 30]
-                    theme_width: "Custom"
-                    size_hint_x: 1
-                    height: "60dp"
-                    md_bg_color: 0.40, 0.84, 0.40, 1   # default
-                    on_release:
-                        active_btn.md_bg_color = 0.40, 0.84, 0.40, 1   # default
-                        not_active_btn.md_bg_color = 0, 0.7, 0, 1
-                        lightly_active_btn.md_bg_color = 0.40, 0.84, 0.40, 1   # default
-                        very_active_btn.md_bg_color = 0.40, 0.84, 0.40, 1   # default
-                        root.selected_activitylevel = "Not Very Active"
+            MDButtonText:
+                text: "     Very Active     "
+                theme_text_color: "Custom"
+                text_color: 1, 1, 1, 1
+                font_style: "Headline"
+                role: "small"
 
-                    MDButtonText:
-                        text: " Not Very Active "
-                        theme_text_color: "Custom"
-                        text_color: 1, 1, 1, 1
-                        font_style: "Headline"
-                        role: "small"
+    MDButton:
+        style: "tonal"
+        halign: "center"
+        pos_hint: {"center_x": .20, "center_y": .15}
+        radius: [20, 20, 20, 20]
+        on_release:
+            root.manager.transition.direction = "fade"
+            app.root.current = "signup_screen"
 
-                # LIGHTLY ACTIVE BUTTON
-                MDButton:
-                    id: lightly_active_btn
-                    style: "filled"
-                    theme_bg_color: "Custom"
-                    radius: [30, 30, 30, 30]
-                    theme_width: "Custom"
-                    size_hint_x: 1
-                    height: "60dp"
-                    md_bg_color: 0.40, 0.84, 0.40, 1   # default
-                    on_release:
-                        active_btn.md_bg_color = 0.40, 0.84, 0.40, 1   # default
-                        not_active_btn.md_bg_color = 0.40, 0.84, 0.40, 1   # default
-                        lightly_active_btn.md_bg_color = 0, 0.7, 0, 1
-                        very_active_btn.md_bg_color = 0.40, 0.84, 0.40, 1   # default
-                        root.selected_activitylevel = "Lightly Active"
+        MDButtonText:
+            text: "Back"
+            font_style: "Title"
+            role: "large"
 
-                    MDButtonText:
-                        text: "   Lightly Active   "
-                        theme_text_color: "Custom"
-                        text_color: 1, 1, 1, 1
-                        font_style: "Headline"
-                        role: "small"
+    MDButton:
+        style: "filled"
+        halign: "center"
+        pos_hint: {"center_x": .75, "center_y": .15}
+        radius: [20, 20, 20, 20]
+        on_release:
+            root.validate_and_continue()
 
-                # VERY ACTIVE BUTTON
-                MDButton:
-                    id: very_active_btn
-                    style: "filled"
-                    theme_bg_color: "Custom"
-                    radius: [30, 30, 30, 30]
-                    theme_width: "Custom"
-                    size_hint_x: 1
-                    height: "60dp"
-                    md_bg_color: 0.40, 0.84, 0.40, 1   # default
-                    on_release:
-                        active_btn.md_bg_color = 0.40, 0.84, 0.40, 1   # default
-                        not_active_btn.md_bg_color = 0.40, 0.84, 0.40, 1   # default
-                        lightly_active_btn.md_bg_color = 0.40, 0.84, 0.40, 1   # default
-                        very_active_btn.md_bg_color = 0, 0.7, 0, 1
-                        root.selected_activitylevel = "Very Active"
-
-                    MDButtonText:
-                        text: "     Very Active     "
-                        theme_text_color: "Custom"
-                        text_color: 1, 1, 1, 1
-                        font_style: "Headline"
-                        role: "small"
-
-            MDBoxLayout:
-                orientation: "horizontal"
-                size_hint_y: None
-                height: "60dp"
-                spacing: dp(20)
-                size_hint_x: 0.9
-                pos_hint: {"center_x": 0.5}
-
-                MDButton:
-                    style: "tonal"
-                    halign: "center"
-                    radius: [20, 20, 20, 20]
-                    on_release:
-                        root.manager.transition.direction = "fade"
-                        app.root.current = "signup_screen"
-
-                    MDButtonText:
-                        text: "Back"
-                        font_style: "Title"
-                        role: "large"
-
-                MDButton:
-                    style: "filled"
-                    halign: "center"
-                    radius: [20, 20, 20, 20]
-                    on_release:
-                        root.validate_and_continue()
-
-                    MDButtonText:
-                        text: "Continue"
-                        font_style: "Title"
-                        role: "large"
+        MDButtonText:
+            text: "Continue"
+            font_style: "Title"
+            role: "large"
 
 <signupScreen3>
     name: "signup_screen3"
     id: signup_screen3
     md_bg_color: (0.902, 0.902, 0.902, 1)
 
-    MDScrollView:
-        do_scroll_x: False
+    MDBoxLayout:
+        padding: 20
+        orientation: "vertical"
 
-        MDBoxLayout:
-            orientation: "vertical"
-            padding: dp(20)
-            spacing: dp(16)
-            size_hint_y: None
-            height: self.minimum_height
+    MDLabel:
+        text: "Fitness Go"
+        font_style: "Headline"
+        role: "medium"
+        halign: "center"
+        theme_text_color: "Custom"
+        text_color: 0, 0, 0, 1
 
-            MDBoxLayout:
-                orientation: "horizontal"
-                size_hint_y: None
-                height: dp(70)
-                spacing: dp(10)
+        pos_hint: {"center_x": .40, "center_y": .90}
 
-                Image:
-                    source: "logo.png"
-                    size_hint: None, None
-                    width: "60dp"
-                    height: "60dp"
-                    pos_hint: {"center_y": 0.5}
+    Image:
+        source: "logo.png"
+        size_hint: None, None
+        width: "80dp"
+        height: "80dp"
+        pos_hint: {"center_x": .12, "center_y": .92}
 
-                MDLabel:
-                    text: "Fitness Go"
-                    font_style: "Headline"
-                    role: "medium"
-                    halign: "left"
-                    theme_text_color: "Custom"
-                    text_color: 0, 0, 0, 1
-                    pos_hint: {"center_y": 0.5}
+    MDLabel:
+        text: "What is your goal?"
+        font_style: "Headline"
+        role: "small"
+        halign: "center"
+        theme_text_color: "Custom"
+        text_color: 0, 0, 0, 1
+        bold: True
+        pos_hint: {"center_x": .50, "center_y": .83}
 
-            MDLabel:
-                text: "What is your goal?"
+    BoxLayout:
+        orientation: "vertical"
+        spacing: "8dp"
+        size_hint: None, None
+        width: "420dp"
+        height: "60dp"
+        pos_hint: {"center_x": .75, "center_y": .43}
+
+        # Lose weight  BUTTON
+        MDButton:
+            id: loss_weight_btn
+            style: "filled"
+            theme_bg_color: "Custom"
+            radius: [30, 30, 30, 30]
+            size_hint_x: None
+            width: "420dp"
+            height: "60dp"
+            md_bg_color: 0.40, 0.84, 0.40, 1   # default
+            on_release:
+                loss_weight_btn.md_bg_color = 0, 0.7, 0, 1
+                gain_weight_btn.md_bg_color = 0.40, 0.84, 0.40, 1   # default
+                keep_fit_btn.md_bg_color = 0.40, 0.84, 0.40, 1   # default
+                gain_muscles_btn.md_bg_color = 0.40, 0.84, 0.40, 1   # default
+                root.selected_goal = "Lose weight"
+
+            MDButtonText:
+                text: "     Lose weight     "
+                theme_text_color: "Custom"
+                text_color: 1, 1, 1, 1
                 font_style: "Headline"
                 role: "small"
-                halign: "center"
+
+        # Gain weight BUTTON
+        MDButton:
+            id: gain_weight_btn
+            style: "filled"
+            theme_bg_color: "Custom"
+            radius: [30, 30, 30, 30]
+            width: "420dp"
+            height: "60dp"
+            md_bg_color: 0.40, 0.84, 0.40, 1   # default
+            on_release:
+                loss_weight_btn.md_bg_color = 0.40, 0.84, 0.40, 1   # default
+                gain_weight_btn.md_bg_color = 0, 0.7, 0, 1
+                keep_fit_btn.md_bg_color = 0.40, 0.84, 0.40, 1   # default
+                gain_muscles_btn.md_bg_color = 0.40, 0.84, 0.40, 1   # default
+                root.selected_goal = "Gain weight"
+
+            MDButtonText:
+                text: "     Gain weight      "
                 theme_text_color: "Custom"
-                text_color: 0, 0, 0, 1
-                bold: True
-                size_hint_y: None
-                height: self.texture_size[1] + dp(10)
+                text_color: 1, 1, 1, 1
+                font_style: "Headline"
+                role: "small"
 
-            MDBoxLayout:
-                orientation: "vertical"
-                spacing: dp(8)
-                size_hint_x: 0.9
-                size_hint_y: None
-                height: self.minimum_height
-                pos_hint: {"center_x": 0.5}
+        # Keep fit BUTTON
+        MDButton:
+            id: keep_fit_btn
+            style: "filled"
+            theme_bg_color: "Custom"
+            radius: [30, 30, 30, 30]
+            width: "420dp"
+            height: "60dp"
+            md_bg_color: 0.40, 0.84, 0.40, 1   # default
+            on_release:
+                loss_weight_btn.md_bg_color = 0.40, 0.84, 0.40, 1   # default
+                gain_weight_btn.md_bg_color = 0.40, 0.84, 0.40, 1   # default
+                keep_fit_btn.md_bg_color = 0, 0.7, 0, 1
+                gain_muscles_btn.md_bg_color = 0.40, 0.84, 0.40, 1   # default
+                root.selected_goal = "Keep fit"
 
-                # Lose weight BUTTON
-                MDButton:
-                    id: loss_weight_btn
-                    style: "filled"
-                    theme_bg_color: "Custom"
-                    radius: [30, 30, 30, 30]
-                    theme_width: "Custom"
-                    size_hint_x: 1
-                    height: "60dp"
-                    md_bg_color: 0.40, 0.84, 0.40, 1   # default
-                    on_release:
-                        loss_weight_btn.md_bg_color = 0, 0.7, 0, 1
-                        gain_weight_btn.md_bg_color = 0.40, 0.84, 0.40, 1   # default
-                        keep_fit_btn.md_bg_color = 0.40, 0.84, 0.40, 1   # default
-                        gain_muscles_btn.md_bg_color = 0.40, 0.84, 0.40, 1   # default
-                        root.selected_goal = "Lose weight"
+            MDButtonText:
+                text: "         Keep Fit         "
+                theme_text_color: "Custom"
+                text_color: 1, 1, 1, 1
+                font_style: "Headline"
+                role: "small"
 
-                    MDButtonText:
-                        text: "     Lose weight     "
-                        theme_text_color: "Custom"
-                        text_color: 1, 1, 1, 1
-                        font_style: "Headline"
-                        role: "small"
+        # Gain muscles  BUTTON
+        MDButton:
+            id: gain_muscles_btn
+            style: "filled"
+            theme_bg_color: "Custom"
+            radius: [30, 30, 30, 30]
+            width: "420dp"
+            height: "60dp"
+            md_bg_color: 0.40, 0.84, 0.40, 1   # default
+            on_release:
+                loss_weight_btn.md_bg_color = 0.40, 0.84, 0.40, 1   # default
+                gain_weight_btn.md_bg_color = 0.40, 0.84, 0.40, 1   # default
+                keep_fit_btn.md_bg_color = 0.40, 0.84, 0.40, 1   # default
+                gain_muscles_btn.md_bg_color = 0, 0.7, 0, 1
+                root.selected_goal = "Gain muscles "
 
-                # Gain weight BUTTON
-                MDButton:
-                    id: gain_weight_btn
-                    style: "filled"
-                    theme_bg_color: "Custom"
-                    radius: [30, 30, 30, 30]
-                    theme_width: "Custom"
-                    size_hint_x: 1
-                    height: "60dp"
-                    md_bg_color: 0.40, 0.84, 0.40, 1   # default
-                    on_release:
-                        loss_weight_btn.md_bg_color = 0.40, 0.84, 0.40, 1   # default
-                        gain_weight_btn.md_bg_color = 0, 0.7, 0, 1
-                        keep_fit_btn.md_bg_color = 0.40, 0.84, 0.40, 1   # default
-                        gain_muscles_btn.md_bg_color = 0.40, 0.84, 0.40, 1   # default
-                        root.selected_goal = "Gain weight"
+            MDButtonText:
+                text: "    Gain muscles    "
+                theme_text_color: "Custom"
+                text_color: 1, 1, 1, 1
+                font_style: "Headline"
+                role: "small"
 
-                    MDButtonText:
-                        text: "     Gain weight      "
-                        theme_text_color: "Custom"
-                        text_color: 1, 1, 1, 1
-                        font_style: "Headline"
-                        role: "small"
+    MDLabel:
+        text: "Desired Weight: "
+        font_style: "Title"
+        role: "small"
+        halign: "center"
+        theme_text_color: "Custom"
+        text_color: 0, 0, 0, 1
+        pos_hint: {"center_x": .22, "center_y": .34}
 
-                # Keep fit BUTTON
-                MDButton:
-                    id: keep_fit_btn
-                    style: "filled"
-                    theme_bg_color: "Custom"
-                    radius: [30, 30, 30, 30]
-                    theme_width: "Custom"
-                    size_hint_x: 1
-                    height: "60dp"
-                    md_bg_color: 0.40, 0.84, 0.40, 1   # default
-                    on_release:
-                        loss_weight_btn.md_bg_color = 0.40, 0.84, 0.40, 1   # default
-                        gain_weight_btn.md_bg_color = 0.40, 0.84, 0.40, 1   # default
-                        keep_fit_btn.md_bg_color = 0, 0.7, 0, 1
-                        gain_muscles_btn.md_bg_color = 0.40, 0.84, 0.40, 1   # default
-                        root.selected_goal = "Keep fit"
+    MDTextField:
+        id: desired_weight_input
+        mode: "outlined"
+        size_hint_x: None
+        width: "90dp"
+        radius: [30, 30, 30, 30]
+        pos_hint: {"center_x": .23, "center_y": .27}
 
-                    MDButtonText:
-                        text: "         Keep Fit         "
-                        theme_text_color: "Custom"
-                        text_color: 1, 1, 1, 1
-                        font_style: "Headline"
-                        role: "small"
+        md_bg_color: 0.98, 1, 0.98, 1
+        line_color_normal: 0, 0, 0, 0
+        line_color_focus: 0, 0, 0, 0
+        text_color_normal: 0, 0, 0, 1
+        text_color_focus: 0, 0, 0, 1
 
-                # Gain muscles BUTTON
-                MDButton:
-                    id: gain_muscles_btn
-                    style: "filled"
-                    theme_bg_color: "Custom"
-                    radius: [30, 30, 30, 30]
-                    theme_width: "Custom"
-                    size_hint_x: 1
-                    height: "60dp"
-                    md_bg_color: 0.40, 0.84, 0.40, 1   # default
-                    on_release:
-                        loss_weight_btn.md_bg_color = 0.40, 0.84, 0.40, 1   # default
-                        gain_weight_btn.md_bg_color = 0.40, 0.84, 0.40, 1   # default
-                        keep_fit_btn.md_bg_color = 0.40, 0.84, 0.40, 1   # default
-                        gain_muscles_btn.md_bg_color = 0, 0.7, 0, 1
-                        root.selected_goal = "Gain muscles "
+        canvas.after:
+            Color:
+                rgba: 0, 0.8, 0, 1          # green border
+            Line:
+                width: 2.5
+                rounded_rectangle: (self.x, self.y, self.width, self.height, 30)
 
-                    MDButtonText:
-                        text: "    Gain muscles    "
-                        theme_text_color: "Custom"
-                        text_color: 1, 1, 1, 1
-                        font_style: "Headline"
-                        role: "small"
+    MDLabel:
+        text: "kg"
+        font_style: "Title"
+        role: "small"
+        halign: "center"
+        theme_text_color: "Custom"
+        text_color: 0, 0, 0, 1
+        pos_hint: {"center_x": .38, "center_y": .27}
 
-            MDBoxLayout:
-                orientation: "horizontal"
-                size_hint_x: 0.9
-                pos_hint: {"center_x": 0.5}
-                size_hint_y: None
-                height: dp(80)
-                spacing: dp(10)
+    MDButton:
+        style: "tonal"
+        halign: "center"
+        pos_hint: {"center_x": .20, "center_y": .15}
+        radius: [20, 20, 20, 20]
+        on_release:
+            root.manager.transition.direction = "fade"
+            app.root.current = "signup_screen2"
 
-                MDLabel:
-                    text: "Desired Weight: "
-                    font_style: "Title"
-                    role: "small"
-                    halign: "center"
-                    theme_text_color: "Custom"
-                    text_color: 0, 0, 0, 1
-                    size_hint_x: None
-                    width: dp(120)
-                    pos_hint: {"center_y": 0.5}
+        MDButtonText:
+            text: "Back"
+            font_style: "Title"
+            role: "large"
 
-                MDTextField:
-                    id: desired_weight_input
-                    mode: "outlined"
-                    size_hint_x: 1
-                    radius: [30, 30, 30, 30]
-                    md_bg_color: 0.98, 1, 0.98, 1
-                    line_color_normal: 0, 0, 0, 0
-                    line_color_focus: 0, 0, 0, 0
-                    text_color_normal: 0, 0, 0, 1
-                    text_color_focus: 0, 0, 0, 1
+    MDButton:
+        style: "filled"
+        halign: "center"
+        pos_hint: {"center_x": .75, "center_y": .15}
+        radius: [20, 20, 20, 20]
+        on_release:
+            root.validate_and_continue()
 
-                    canvas.after:
-                        Color:
-                            rgba: 0, 0.8, 0, 1          # green border
-                        Line:
-                            width: 2.5
-                            rounded_rectangle: (self.x, self.y, self.width, self.height, 30)
-
-                MDLabel:
-                    text: "kg"
-                    font_style: "Title"
-                    role: "small"
-                    halign: "center"
-                    theme_text_color: "Custom"
-                    text_color: 0, 0, 0, 1
-                    size_hint_x: None
-                    width: dp(30)
-                    pos_hint: {"center_y": 0.5}
-
-            MDBoxLayout:
-                orientation: "horizontal"
-                size_hint_y: None
-                height: "60dp"
-                spacing: dp(20)
-                size_hint_x: 0.9
-                pos_hint: {"center_x": 0.5}
-
-                MDButton:
-                    style: "tonal"
-                    halign: "center"
-                    radius: [20, 20, 20, 20]
-                    on_release:
-                        root.manager.transition.direction = "fade"
-                        app.root.current = "signup_screen2"
-
-                    MDButtonText:
-                        text: "Back"
-                        font_style: "Title"
-                        role: "large"
-
-                MDButton:
-                    style: "filled"
-                    halign: "center"
-                    radius: [20, 20, 20, 20]
-                    on_release:
-                        root.validate_and_continue()
-
-                    MDButtonText:
-                        text: "Continue"
-                        font_style: "Title"
-                        role: "large"
+        MDButtonText:
+            text: "Continue"
+            font_style: "Title"
+            role: "large"
 
 <signupScreen4>
     name: "signup_screen4"
@@ -1223,725 +1115,656 @@ WindowManager:
     selected_healthconditions: []
     md_bg_color: (0.902, 0.902, 0.902, 1)
 
-    MDScrollView:
-        do_scroll_x: False
+    MDBoxLayout:
+        padding: 20
+        orientation: "vertical"
 
-        MDBoxLayout:
-            orientation: "vertical"
-            padding: dp(20)
-            spacing: dp(16)
-            size_hint_y: None
-            height: self.minimum_height
 
-            MDBoxLayout:
-                orientation: "horizontal"
-                size_hint_y: None
-                height: dp(70)
-                spacing: dp(10)
+    MDLabel:
+        text: "Fitness Go"
+        font_style: "Headline"
+        role: "medium"
+        halign: "center"
+        theme_text_color: "Custom"
+        text_color: 0, 0, 0, 1
 
-                Image:
-                    source: "logo.png"
-                    size_hint: None, None
-                    width: "60dp"
-                    height: "60dp"
-                    pos_hint: {"center_y": 0.5}
+        pos_hint: {"center_x": .40, "center_y": .90}
 
-                MDLabel:
-                    text: "Fitness Go"
-                    font_style: "Headline"
-                    role: "medium"
-                    halign: "left"
-                    theme_text_color: "Custom"
-                    text_color: 0, 0, 0, 1
-                    pos_hint: {"center_y": 0.5}
+    Image:
+        source: "logo.png"
+        size_hint: None, None
+        width: "80dp"
+        height: "80dp"
+        pos_hint: {"center_x": .12, "center_y": .92}
 
-            MDLabel:
-                text: "Do you have any health conditions?"
-                font_style: "Title"
-                role: "large"
-                halign: "center"
+    MDLabel:
+        text: "Do you have any health conditions?"
+        font_style: "Title"
+        role: "large"
+        halign: "center"
+        theme_text_color: "Custom"
+        text_color: 0, 0, 0, 1
+        bold: True
+        pos_hint: {"center_x": .50, "center_y": .82}
+
+    BoxLayout:
+        orientation: "horizontal"
+        spacing: "15dp"
+        size_hint: None, None
+        width: "420dp"
+        height: "60dp"
+        pos_hint: {"center_x": .75, "center_y": .73}
+
+        # Yes BUTTON
+        MDButton:
+            id: yes_btn
+            style: "filled"
+            theme_bg_color: "Custom"
+            radius: [30, 30, 30, 30]
+            size_hint_x: None
+            width: "420dp"
+            md_bg_color: (0.902, 0.902, 0.902, 1)
+            height: "60dp"
+            md_bg_color: 0.40, 0.84, 0.40, 1   # default
+            on_release:
+                yes_btn.md_bg_color = 0, 0.7, 0, 1
+                no_btn.md_bg_color = 0.40, 0.84, 0.40, 1   # default
+                root.selected_boolean_healthcondition = "Yes"
+
+            MDButtonText:
+                text: " Yes "
                 theme_text_color: "Custom"
-                text_color: 0, 0, 0, 1
-                bold: True
-                size_hint_y: None
-                height: self.texture_size[1] + dp(10)
+                text_color: 1, 1, 1, 1
+                font_style: "Headline"
+                role: "small"
 
-            MDBoxLayout:
-                orientation: "horizontal"
-                spacing: dp(15)
-                size_hint_x: 0.9
-                size_hint_y: None
+        # No BUTTON
+        MDButton:
+            id: no_btn
+            style: "filled"
+            theme_bg_color: "Custom"
+            radius: [30, 30, 30, 30]
+            width: "420dp"
+            height: "60dp"
+            md_bg_color: 0.40, 0.84, 0.40, 1   # default
+            on_release:
+                yes_btn.md_bg_color = 0.40, 0.84, 0.40, 1   # default
+                no_btn.md_bg_color = 0, 0.7, 0, 1
+                root.selected_boolean_healthcondition = "No"
+                root.selected_healthconditions.clear()
+                root.show_other_field = False
+
+
+            MDButtonText:
+                text: "  No  "
+                theme_text_color: "Custom"
+                text_color: 1, 1, 1, 1
+                font_style: "Headline"
+                role: "small"
+
+    MDBoxLayout:
+        orientation: "vertical"
+        spacing: "12dp"
+        size_hint_y: None
+        height: self.minimum_height
+        opacity: 1 if root.selected_boolean_healthcondition == "Yes" else 0
+        disabled: False if root.selected_boolean_healthcondition == "Yes" else True
+        pos_hint: {"center_x": .50, "center_y": .42}
+
+        MDLabel:
+            text: "What health condition do you have?"
+            font_style: "Title"
+            role: "large"
+            halign: "center"
+            theme_text_color: "Custom"
+            text_color: 0, 0, 0, 1
+            bold: True
+            pos_hint: {"center_x": .50, "center_y": .65}
+
+        BoxLayout:
+            orientation: "vertical"
+            spacing: "12dp"
+            size_hint: None, None
+            width: "420dp"
+            height: self.minimum_height
+            pos_hint: {"center_x": .73, "center_y": .40}
+
+            # Heart Disease BUTTON
+            MDButton:
+                id: heart_disease_btn
+                style: "filled"
+                theme_bg_color: "Custom"
+                radius: [30, 30, 30, 30]
+                size_hint_x: None
+                width: "420dp"
                 height: "60dp"
-                pos_hint: {"center_x": 0.5}
+                md_bg_color: 0.40, 0.84, 0.40, 1   # default
+                on_release:
+                    root.toggle_condition("heart_disease", heart_disease_btn)
 
-                # Yes BUTTON
-                MDButton:
-                    id: yes_btn
-                    style: "filled"
-                    theme_bg_color: "Custom"
-                    radius: [30, 30, 30, 30]
-                    theme_width: "Custom"
-                    size_hint_x: 1
-                    height: "60dp"
-                    md_bg_color: 0.40, 0.84, 0.40, 1   # default
-                    on_release:
-                        yes_btn.md_bg_color = 0, 0.7, 0, 1
-                        no_btn.md_bg_color = 0.40, 0.84, 0.40, 1   # default
-                        root.selected_boolean_healthcondition = "Yes"
-
-                    MDButtonText:
-                        text: " Yes "
-                        theme_text_color: "Custom"
-                        text_color: 1, 1, 1, 1
-                        font_style: "Headline"
-                        role: "small"
-
-                # No BUTTON
-                MDButton:
-                    id: no_btn
-                    style: "filled"
-                    theme_bg_color: "Custom"
-                    radius: [30, 30, 30, 30]
-                    theme_width: "Custom"
-                    size_hint_x: 1
-                    height: "60dp"
-                    md_bg_color: 0.40, 0.84, 0.40, 1   # default
-                    on_release:
-                        yes_btn.md_bg_color = 0.40, 0.84, 0.40, 1   # default
-                        no_btn.md_bg_color = 0, 0.7, 0, 1
-                        root.selected_boolean_healthcondition = "No"
-                        root.selected_healthconditions.clear()
-                        root.show_other_field = False
-
-                    MDButtonText:
-                        text: "  No  "
-                        theme_text_color: "Custom"
-                        text_color: 1, 1, 1, 1
-                        font_style: "Headline"
-                        role: "small"
-
-            MDBoxLayout:
-                orientation: "vertical"
-                spacing: "12dp"
-                size_hint_y: None
-                height: self.minimum_height
-                opacity: 1 if root.selected_boolean_healthcondition == "Yes" else 0
-                disabled: False if root.selected_boolean_healthcondition == "Yes" else True
-
-                MDLabel:
-                    text: "What health condition do you have?"
-                    font_style: "Title"
-                    role: "large"
-                    halign: "center"
+                MDButtonText:
+                    text: "     Heart Disease     "
                     theme_text_color: "Custom"
-                    text_color: 0, 0, 0, 1
-                    bold: True
-                    size_hint_y: None
-                    height: self.texture_size[1] + dp(10)
+                    text_color: 1, 1, 1, 1
+                    font_style: "Headline"
+                    role: "small"
 
-                MDBoxLayout:
-                    orientation: "vertical"
-                    spacing: dp(12)
-                    size_hint_x: 0.9
-                    size_hint_y: None
-                    height: self.minimum_height
-                    pos_hint: {"center_x": 0.5}
-
-                    # Heart Disease BUTTON
-                    MDButton:
-                        id: heart_disease_btn
-                        style: "filled"
-                        theme_bg_color: "Custom"
-                        radius: [30, 30, 30, 30]
-                        theme_width: "Custom"
-                        size_hint_x: 1
-                        height: "60dp"
-                        md_bg_color: 0.40, 0.84, 0.40, 1   # default
-                        on_release:
-                            root.toggle_condition("heart_disease", heart_disease_btn)
-
-                        MDButtonText:
-                            text: "     Heart Disease     "
-                            theme_text_color: "Custom"
-                            text_color: 1, 1, 1, 1
-                            font_style: "Headline"
-                            role: "small"
-
-                    # Asthma BUTTON
-                    MDButton:
-                        id: asthma_btn
-                        style: "filled"
-                        theme_bg_color: "Custom"
-                        radius: [30, 30, 30, 30]
-                        theme_width: "Custom"
-                        size_hint_x: 1
-                        height: "60dp"
-                        md_bg_color: 0.40, 0.84, 0.40, 1   # default
-                        on_release:
-                            root.toggle_condition("Asthma", asthma_btn)
-
-                        MDButtonText:
-                            text: "          Asthma           "
-                            theme_text_color: "Custom"
-                            text_color: 1, 1, 1, 1
-                            font_style: "Headline"
-                            role: "small"
-
-                    # Others BUTTON
-                    MDButton:
-                        id: others_btn
-                        style: "filled"
-                        theme_bg_color: "Custom"
-                        radius: [30, 30, 30, 30]
-                        theme_width: "Custom"
-                        size_hint_x: 1
-                        height: "60dp"
-                        md_bg_color: 0.40, 0.84, 0.40, 1   # default
-                        on_release:
-                            root.toggle_condition("Others", others_btn)
-
-                        MDButtonText:
-                            text: "           Others            "
-                            theme_text_color: "Custom"
-                            text_color: 1, 1, 1, 1
-                            font_style: "Headline"
-                            role: "small"
-
-                    # TEXTFIELD FOR "OTHER CONDITION"
-                    MDTextField:
-                        id: other_condition_input
-                        hint_text: "Please specify your condition"
-                        mode: "outlined"
-                        size_hint_x: 0.9
-                        pos_hint: {"center_x": 0.5}
-                        radius: [30, 30, 30, 30]
-                        opacity: 1 if root.show_other_field else 0
-                        disabled: False if root.show_other_field else True
-                        md_bg_color: 0.98, 1, 0.98, 1
-                        line_color_normal: 0, 0, 0, 0
-                        line_color_focus: 0, 0, 0, 0
-                        text_color_normal: 0, 0, 0, 1
-                        text_color_focus: 0, 0, 0, 1
-
-                        canvas.after:
-                            Color:
-                                rgba: 0, 0.8, 0, 1   # Green border
-                            Line:
-                                width: 2.5
-                                rounded_rectangle: (self.x, self.y, self.width, self.height, 30)
-
-            MDBoxLayout:
-                orientation: "horizontal"
-                size_hint_y: None
+            # Asthma BUTTON
+            MDButton:
+                id: asthma_btn
+                style: "filled"
+                theme_bg_color: "Custom"
+                radius: [30, 30, 30, 30]
+                size_hint_x: None
+                width: "420dp"
                 height: "60dp"
-                spacing: dp(20)
-                size_hint_x: 0.9
-                pos_hint: {"center_x": 0.5}
+                md_bg_color: 0.40, 0.84, 0.40, 1   # default
+                on_release:
+                    root.toggle_condition("Asthma", asthma_btn)
 
-                MDButton:
-                    style: "tonal"
-                    halign: "center"
-                    radius: [20, 20, 20, 20]
-                    on_release:
-                        root.manager.transition.direction = "fade"
-                        app.root.current = "signup_screen3"
+                MDButtonText:
+                    text: "          Asthma           "
+                    theme_text_color: "Custom"
+                    text_color: 1, 1, 1, 1
+                    font_style: "Headline"
+                    role: "small"
 
-                    MDButtonText:
-                        text: "Back"
-                        font_style: "Title"
-                        role: "large"
+            # Others BUTTON
+            MDButton:
+                id: others_btn
+                style: "filled"
+                theme_bg_color: "Custom"
+                radius: [30, 30, 30, 30]
+                size_hint_x: None
+                width: "420dp"
+                height: "60dp"
+                md_bg_color: 0.40, 0.84, 0.40, 1   # default
+                on_release:
+                    root.toggle_condition("Others", others_btn)
 
-                MDButton:
-                    style: "filled"
-                    halign: "center"
-                    radius: [20, 20, 20, 20]
-                    on_release:
-                        root.validate_and_continue()
+                MDButtonText:
+                    text: "           Others            "
+                    theme_text_color: "Custom"
+                    text_color: 1, 1, 1, 1
+                    font_style: "Headline"
+                    role: "small"
 
-                    MDButtonText:
-                        text: "Continue"
-                        font_style: "Title"
-                        role: "large"
+            # TEXTFIELD FOR "OTHER CONDITION"
+            MDTextField:
+                id: other_condition_input
+                hint_text: "Please specify your condition"
+                mode: "outlined"
+                size_hint_x: None
+                width: "245dp"
+                radius: [30, 30, 30, 30]
+
+                pos_hint: {"center_x": .29, "center_y": .22}
+                opacity: 1 if root.show_other_field else 0
+                disabled: False if root.show_other_field else True
+
+                md_bg_color: 0.98, 1, 0.98, 1
+                line_color_normal: 0, 0, 0, 0
+                line_color_focus: 0, 0, 0, 0
+                text_color_normal: 0, 0, 0, 1
+                text_color_focus: 0, 0, 0, 1
+
+                canvas.after:
+                    Color:
+                        rgba: 0, 0.8, 0, 1   # Green border
+                    Line:
+                        width: 2.5
+                        rounded_rectangle: (self.x, self.y, self.width, self.height, 30)
+
+    MDButton:
+        style: "tonal"
+        halign: "center"
+        pos_hint: {"center_x": .20, "center_y": .15}
+        radius: [20, 20, 20, 20]
+        on_release:
+            root.manager.transition.direction = "fade"
+            app.root.current = "signup_screen3"
+
+        MDButtonText:
+            text: "Back"
+            font_style: "Title"
+            role: "large"
+
+    MDButton:
+        style: "filled"
+        halign: "center"
+        pos_hint: {"center_x": .75, "center_y": .15}
+        radius: [20, 20, 20, 20]
+        on_release:
+            root.validate_and_continue()
+
+        MDButtonText:
+            text: "Continue"
+            font_style: "Title"
+            role: "large"
 
 <signupScreen5>
     name: "signup_screen5"
     id: signup_screen5
     md_bg_color: (0.902, 0.902, 0.902, 1)
 
-    MDScrollView:
-        do_scroll_x: False
+    MDBoxLayout:
+        padding: 20
+        orientation: "vertical"
 
-        MDBoxLayout:
-            orientation: "vertical"
-            padding: dp(20)
-            spacing: dp(16)
-            size_hint_y: None
-            height: self.minimum_height
 
-            MDBoxLayout:
-                orientation: "horizontal"
-                size_hint_y: None
-                height: dp(70)
-                spacing: dp(10)
+    MDLabel:
+        text: "Fitness Go"
+        font_style: "Headline"
+        role: "medium"
+        halign: "center"
+        theme_text_color: "Custom"
+        text_color: 0, 0, 0, 1
 
-                Image:
-                    source: "logo.png"
-                    size_hint: None, None
-                    width: "60dp"
-                    height: "60dp"
-                    pos_hint: {"center_y": 0.5}
+        pos_hint: {"center_x": .40, "center_y": .90}
 
-                MDLabel:
-                    text: "Fitness Go"
-                    font_style: "Headline"
-                    role: "medium"
-                    halign: "left"
-                    theme_text_color: "Custom"
-                    text_color: 0, 0, 0, 1
-                    pos_hint: {"center_y": 0.5}
+    Image:
+        source: "logo.png"
+        size_hint: None, None
+        width: "80dp"
+        height: "80dp"
+        pos_hint: {"center_x": .12, "center_y": .92}
 
-            MDLabel:
-                text: "Create Your Profile"
-                font_style: "Headline"
-                role: "small"
-                halign: "center"
-                theme_text_color: "Custom"
-                text_color: 0, 0, 0, 1
-                bold: True
-                size_hint_y: None
-                height: self.texture_size[1] + dp(10)
+    MDLabel:
+        text: "Create Your Profile"
+        font_style: "Headline"
+        role: "small"
+        halign: "center"
+        theme_text_color: "Custom"
+        text_color: 0, 0, 0, 1
+        bold: True
+        pos_hint: {"center_x": .50, "center_y": .82}
 
-            MDLabel:
-                text: "Username: "
-                font_style: "Title"
-                role: "medium"
-                halign: "center"
-                theme_text_color: "Custom"
-                text_color: 0, 0, 0, 1
-                size_hint_y: None
-                height: self.texture_size[1] + dp(5)
+    MDLabel:
+        text: "Username: "
+        font_style: "Title"
+        role: "medium"
+        halign: "center"
+        theme_text_color: "Custom"
+        text_color: 0, 0, 0, 1
+        pos_hint: {"center_x": .19, "center_y": .76}
 
-            MDTextField:
-                id: username_field
-                mode: "outlined"
-                size_hint_x: 0.9
-                pos_hint: {"center_x": 0.5}
-                radius: [30, 30, 30, 30]
-                md_bg_color: 0.98, 1, 0.98, 1
-                line_color_normal: 0, 0, 0, 0
-                line_color_focus: 0, 0, 0, 0
-                text_color_normal: 0, 0, 0, 1
-                text_color_focus: 0, 0, 0, 1
+    MDTextField:
+        id: username_field
+        mode: "outlined"
+        size_hint_x: None
+        width: "320dp"
+        radius: [30, 30, 30, 30]
+        pos_hint: {"center_x": .50, "center_y": .69}
 
-                canvas.after:
-                    Color:
-                        rgba: 0, 0.8, 0, 1
-                    Line:
-                        width: 2.5
-                        rounded_rectangle: (self.x, self.y, self.width, self.height, 30)
+        md_bg_color: 0.98, 1, 0.98, 1
+        line_color_normal: 0, 0, 0, 0
+        line_color_focus: 0, 0, 0, 0
+        text_color_normal: 0, 0, 0, 1
+        text_color_focus: 0, 0, 0, 1
 
-                MDTextFieldTrailingIcon:
-                    icon: "account"
-                    theme_icon_color: "Custom"
-                    icon_color_normal: 0, 0.8, 0, 1   # green when unfocused
-                    icon_color_focus: 0, 0.8, 0, 1
+        canvas.after:
+            Color:
+                rgba: 0, 0.8, 0, 1
+            Line:
+                width: 2.5
+                rounded_rectangle: (self.x, self.y, self.width, self.height, 30)
 
-            MDLabel:
-                text: "Email: "
-                font_style: "Title"
-                role: "medium"
-                halign: "center"
-                theme_text_color: "Custom"
-                text_color: 0, 0, 0, 1
-                size_hint_y: None
-                height: self.texture_size[1] + dp(5)
+        MDTextFieldTrailingIcon:
+            icon: "account"
+            theme_icon_color: "Custom"
+            icon_color_normal: 0, 0.8, 0, 1   # green when unfocused
+            icon_color_focus: 0, 0.8, 0, 1
 
-            MDTextField:
-                id: email_field
-                mode: "outlined"
-                size_hint_x: 0.9
-                pos_hint: {"center_x": 0.5}
-                radius: [30, 30, 30, 30]
-                md_bg_color: 0.98, 1, 0.98, 1
-                line_color_normal: 0, 0, 0, 0
-                line_color_focus: 0, 0, 0, 0
-                text_color_normal: 0, 0, 0, 1
-                text_color_focus: 0, 0, 0, 1
 
-                canvas.after:
-                    Color:
-                        rgba: 0, 0.8, 0, 1
-                    Line:
-                        width: 2.5
-                        rounded_rectangle: (self.x, self.y, self.width, self.height, 30)
 
-                MDTextFieldTrailingIcon:
-                    icon: "email"
-                    theme_icon_color: "Custom"
-                    icon_color_normal: 0, 0.8, 0, 1   # green when unfocused
-                    icon_color_focus: 0, 0.8, 0, 1
+    MDLabel:
+        text: "Email: "
+        font_style: "Title"
+        role: "medium"
+        halign: "center"
+        theme_text_color: "Custom"
+        text_color: 0, 0, 0, 1
+        pos_hint: {"center_x": .15, "center_y": .61}
 
-            MDLabel:
-                text: "Password: "
-                font_style: "Title"
-                role: "medium"
-                halign: "center"
-                theme_text_color: "Custom"
-                text_color: 0, 0, 0, 1
-                size_hint_y: None
-                height: self.texture_size[1] + dp(5)
+    MDTextField:
+        id: email_field
+        mode: "outlined"
+        size_hint_x: None
+        width: "320dp"
+        radius: [30, 30, 30, 30]
+        pos_hint: {"center_x": .50, "center_y": .54}
 
-            MDBoxLayout:
-                orientation: "horizontal"
-                size_hint_x: 0.9
-                pos_hint: {"center_x": 0.5}
-                size_hint_y: None
-                height: dp(56)
-                spacing: dp(4)
+        md_bg_color: 0.98, 1, 0.98, 1
+        line_color_normal: 0, 0, 0, 0
+        line_color_focus: 0, 0, 0, 0
+        text_color_normal: 0, 0, 0, 1
+        text_color_focus: 0, 0, 0, 1
 
-                MDTextField:
-                    id: password_field
-                    mode: "outlined"
-                    size_hint_x: 1
-                    password: True
-                    password_mask: "•"
-                    radius: [30, 30, 30, 30]
-                    md_bg_color: 0.98, 1, 0.98, 1
-                    line_color_normal: 0, 0, 0, 0
-                    line_color_focus: 0, 0, 0, 0
-                    text_color_normal: 0, 0, 0, 1
-                    text_color_focus: 0, 0, 0, 1
+        canvas.after:
+            Color:
+                rgba: 0, 0.8, 0, 1
+            Line:
+                width: 2.5
+                rounded_rectangle: (self.x, self.y, self.width, self.height, 30)
 
-                    canvas.after:
-                        Color:
-                            rgba: 0, 0.8, 0, 1
-                        Line:
-                            width: 2.5
-                            rounded_rectangle: (self.x, self.y, self.width, self.height, 30)
+        MDTextFieldTrailingIcon:
+            icon: "email"
+            theme_icon_color: "Custom"
+            icon_color_normal: 0, 0.8, 0, 1   # green when unfocused
+            icon_color_focus: 0, 0.8, 0, 1
 
-                MDIconButton:
-                    id: password_eye_icon
-                    icon: "eye-off"
-                    size_hint: None, None
-                    size: "32dp", "32dp"
-                    pos_hint: {"center_y": 0.5}
-                    theme_icon_color: "Custom"
-                    icon_color: 0, 0.639, 0, 1
-                    on_release:
-                        root.toggle_password_visibility(password_field, self)
+    MDLabel:
+        text: "Password: "
+        font_style: "Title"
+        role: "medium"
+        halign: "center"
+        theme_text_color: "Custom"
+        text_color: 0, 0, 0, 1
 
-            MDLabel:
-                text: "Confirm Password: "
-                font_style: "Title"
-                role: "medium"
-                halign: "center"
-                theme_text_color: "Custom"
-                text_color: 0, 0, 0, 1
-                size_hint_y: None
-                height: self.texture_size[1] + dp(5)
+        pos_hint: {"center_x": .18, "center_y": .46}
 
-            MDBoxLayout:
-                orientation: "horizontal"
-                size_hint_x: 0.9
-                pos_hint: {"center_x": 0.5}
-                size_hint_y: None
-                height: dp(56)
-                spacing: dp(4)
+    MDTextField:
+        id: password_field
+        mode: "outlined"
+        size_hint_x: None
+        width: "320dp"
+        password: True
+        password_mask: "•"
+        radius: [30, 30, 30, 30]
+        pos_hint: {"center_x": .50, "center_y": .39}
 
-                MDTextField:
-                    id: con_password_field
-                    mode: "outlined"
-                    size_hint_x: 1
-                    password: True
-                    password_mask: "•"
-                    radius: [30, 30, 30, 30]
-                    md_bg_color: 0.98, 1, 0.98, 1
-                    line_color_normal: 0, 0, 0, 0
-                    line_color_focus: 0, 0, 0, 0
-                    text_color_normal: 0, 0, 0, 1
-                    text_color_focus: 0, 0, 0, 1
+        md_bg_color: 0.98, 1, 0.98, 1
+        line_color_normal: 0, 0, 0, 0
+        line_color_focus: 0, 0, 0, 0
+        text_color_normal: 0, 0, 0, 1
+        text_color_focus: 0, 0, 0, 1
 
-                    canvas.after:
-                        Color:
-                            rgba: 0, 0.8, 0, 1
-                        Line:
-                            width: 2.5
-                            rounded_rectangle: (self.x, self.y, self.width, self.height, 30)
+        canvas.after:
+            Color:
+                rgba: 0, 0.8, 0, 1
+            Line:
+                width: 2.5
+                rounded_rectangle: (self.x, self.y, self.width, self.height, 30)
 
-                MDIconButton:
-                    id: confirm_password_eye_icon
-                    icon: "eye-off"
-                    size_hint: None, None
-                    size: "32dp", "32dp"
-                    pos_hint: {"center_y": 0.5}
-                    theme_icon_color: "Custom"
-                    icon_color: 0, 0.639, 0, 1
-                    on_release:
-                        root.toggle_password_visibility(con_password_field, self)
+    MDIconButton:
+        id: password_eye_icon
+        icon: "eye-off"
+        size_hint: None, None
+        size: "32dp", "32dp"
+        pos_hint: {"center_x": 0.85, "center_y": 0.39} # 🔑 alignment fix
+        theme_icon_color: "Custom"
+        icon_color: 0, 0.639, 0, 1
+        on_release:
+            root.toggle_password_visibility(password_field, self)
 
-            MDBoxLayout:
-                orientation: "horizontal"
-                size_hint_y: None
-                height: "60dp"
-                spacing: dp(20)
-                size_hint_x: 0.9
-                pos_hint: {"center_x": 0.5}
+    MDLabel:
+        text: "Confirm Password: "
+        font_style: "Title"
+        role: "medium"
+        halign: "center"
+        theme_text_color: "Custom"
+        text_color: 0, 0, 0, 1
 
-                MDButton:
-                    style: "tonal"
-                    halign: "center"
-                    radius: [20, 20, 20, 20]
-                    on_release:
-                        root.manager.transition.direction = "fade"
-                        app.root.current = "signup_screen4"
+        pos_hint: {"center_x": .25, "center_y": .31}
 
-                    MDButtonText:
-                        text: "Back"
-                        font_style: "Title"
-                        role: "large"
+    MDTextField:
+        id: con_password_field
+        mode: "outlined"
+        size_hint_x: None
+        width: "320dp"
+        password: True
+        password_mask: "•"
+        radius: [30, 30, 30, 30]
+        pos_hint: {"center_x": .50, "center_y": .24}
 
-                MDButton:
-                    style: "filled"
-                    halign: "center"
-                    radius: [20, 20, 20, 20]
-                    on_release:
-                        root.validate_and_create_account()
+        md_bg_color: 0.98, 1, 0.98, 1
+        line_color_normal: 0, 0, 0, 0
+        line_color_focus: 0, 0, 0, 0
+        text_color_normal: 0, 0, 0, 1
+        text_color_focus: 0, 0, 0, 1
 
-                    MDButtonText:
-                        text: "Sign Up"
-                        font_style: "Title"
-                        role: "large"
+        canvas.after:
+            Color:
+                rgba: 0, 0.8, 0, 1
+            Line:
+                width: 2.5
+                rounded_rectangle: (self.x, self.y, self.width, self.height, 30)
+
+    MDIconButton:
+        id: confirm_password_eye_icon
+        icon: "eye-off"
+        size_hint: None, None
+        size: "32dp", "32dp"
+        pos_hint: {"center_x": 0.85, "center_y": 0.24} # 🔑 alignment fix
+        theme_icon_color: "Custom"
+        icon_color: 0, 0.639, 0, 1
+        on_release:
+            root.toggle_password_visibility(con_password_field, self)
+
+    MDButton:
+        style: "tonal"
+        halign: "center"
+        pos_hint: {"center_x": .20, "center_y": .15}
+        radius: [20, 20, 20, 20]
+        on_release:
+            root.manager.transition.direction = "fade"
+            app.root.current = "signup_screen4"
+
+        MDButtonText:
+            text: "Back"
+            font_style: "Title"
+            role: "large"
+
+    MDButton:
+        style: "filled"
+        halign: "center"
+        pos_hint: {"center_x": .75, "center_y": .15}
+        radius: [20, 20, 20, 20]
+        on_release:
+            root.validate_and_create_account()
+
+        MDButtonText:
+            text: "Sign Up"
+            font_style: "Title"
+            role: "large"
 
 <signupScreen6>
     name: "signup_screen6"
     id: signup_screen6
     md_bg_color: (0.902, 0.902, 0.902, 1)
 
-    MDScrollView:
-        do_scroll_x: False
+    MDBoxLayout:
+        padding: 20
+        orientation: "vertical"
 
-        MDBoxLayout:
-            orientation: "vertical"
-            padding: dp(20)
-            spacing: dp(16)
-            size_hint_y: None
-            height: self.minimum_height
+    MDLabel:
+        text: "Fitness Go"
+        font_style: "Headline"
+        role: "medium"
+        halign: "center"
+        theme_text_color: "Custom"
+        text_color: 0, 0, 0, 1
 
-            MDBoxLayout:
-                orientation: "horizontal"
-                size_hint_y: None
-                height: dp(70)
-                spacing: dp(10)
+        pos_hint: {"center_x": .40, "center_y": .90}
 
-                Image:
-                    source: "logo.png"
-                    size_hint: None, None
-                    width: "60dp"
-                    height: "60dp"
-                    pos_hint: {"center_y": 0.5}
+    Image:
+        source: "logo.png"
+        size_hint: None, None
+        width: "80dp"
+        height: "80dp"
+        pos_hint: {"center_x": .12, "center_y": .92}
 
-                MDLabel:
-                    text: "Fitness Go"
-                    font_style: "Headline"
-                    role: "medium"
-                    halign: "left"
-                    theme_text_color: "Custom"
-                    text_color: 0, 0, 0, 1
-                    pos_hint: {"center_y": 0.5}
+    MDLabel:
+        text: "Add Profile Photo"
+        font_style: "Headline"
+        role: "small"
+        halign: "center"
+        theme_text_color: "Custom"
+        text_color: 0, 0, 0, 1
+        bold: True
+        pos_hint: {"center_x": .50, "center_y": .78}
 
-            MDLabel:
-                text: "Add Profile Photo"
-                font_style: "Headline"
-                role: "small"
-                halign: "center"
-                theme_text_color: "Custom"
-                text_color: 0, 0, 0, 1
-                bold: True
-                size_hint_y: None
-                height: self.texture_size[1] + dp(10)
+    Image:
+        id: profile_img
+        source: "profile_default.png"
+        size_hint: None, None
+        width: "300dp"
+        height: "300dp"
+        pos_hint: {"center_x": .50, "center_y": .50}
 
-            Image:
-                id: profile_img
-                source: "profile_default.png"
-                size_hint: None, None
-                width: "200dp"
-                height: "200dp"
-                pos_hint: {"center_x": 0.5}
+    MDIconButton:
+        icon: "plus"
+        style: "filled"
+        halign: "center"
+        pos_hint: {"center_x": .78, "center_y": .28}
 
-            MDIconButton:
-                icon: "plus"
-                style: "filled"
-                halign: "center"
-                pos_hint: {"center_x": 0.5}
-                on_release:
-                    root.manager.transition.direction = "fade"
-                    root.open_file_manager()
+        on_release:
+            root.manager.transition.direction = "fade"
+            root.open_file_manager()
 
-            MDBoxLayout:
-                orientation: "horizontal"
-                size_hint_y: None
-                height: "60dp"
-                spacing: dp(20)
-                size_hint_x: 0.9
-                pos_hint: {"center_x": 0.5}
 
-                MDButton:
-                    style: "tonal"
-                    halign: "center"
-                    radius: [20, 20, 20, 20]
-                    on_release:
-                        root.manager.transition.direction = "fade"
-                        root.skip_photo()
 
-                    MDButtonText:
-                        text: "Not now"
-                        font_style: "Title"
-                        role: "large"
+    MDButton:
+        style: "tonal"
+        halign: "center"
+        pos_hint: {"center_x": .25, "center_y": .15}
+        radius: [20, 20, 20, 20]
+        on_release:
+            root.manager.transition.direction = "fade"
+            root.skip_photo()
 
-                MDButton:
-                    style: "filled"
-                    halign: "center"
-                    radius: [20, 20, 20, 20]
-                    on_release:
-                        root.save_profile_photo()
+        MDButtonText:
+            text: "Not now"
+            font_style: "Title"
+            role: "large"
 
-                    MDButtonText:
-                        text: "Continue"
-                        font_style: "Title"
-                        role: "large"
+    MDButton:
+        style: "filled"
+        halign: "center"
+        pos_hint: {"center_x": .75, "center_y": .15}
+        radius: [20, 20, 20, 20]
+        on_release:
+            root.save_profile_photo()
+
+        MDButtonText:
+            text: "Continue"
+            font_style: "Title"
+            role: "large"
 
 <SignupScreen7>
     name: "signup_screen7"
     id: signup_screen7
     md_bg_color: (0.902, 0.902, 0.902, 1)
 
-    MDScrollView:
-        do_scroll_x: False
+    MDBoxLayout:
+        padding: 20
+        orientation: "vertical"
 
-        MDBoxLayout:
-            orientation: "vertical"
-            padding: dp(20)
-            spacing: dp(16)
-            size_hint_y: None
-            height: self.minimum_height
+    MDLabel:
+        text: "Fitness Go"
+        font_style: "Headline"
+        role: "medium"
+        halign: "center"
+        theme_text_color: "Custom"
+        text_color: 0, 0, 0, 1
 
-            MDBoxLayout:
-                orientation: "horizontal"
-                size_hint_y: None
-                height: dp(70)
-                spacing: dp(10)
+        pos_hint: {"center_x": .40, "center_y": .90}
 
-                Image:
-                    source: "logo.png"
-                    size_hint: None, None
-                    width: "60dp"
-                    height: "60dp"
-                    pos_hint: {"center_y": 0.5}
+    Image:
+        source: "logo.png"
+        size_hint: None, None
+        width: "80dp"
+        height: "80dp"
+        pos_hint: {"center_x": .12, "center_y": .92}
 
-                MDLabel:
-                    text: "Fitness Go"
-                    font_style: "Headline"
-                    role: "medium"
-                    halign: "left"
-                    theme_text_color: "Custom"
-                    text_color: 0, 0, 0, 1
-                    pos_hint: {"center_y": 0.5}
+    MDLabel:
+        text: "Congratulations!"
+        font_style: "Headline"
+        role: "small"
+        halign: "center"
+        theme_text_color: "Custom"
+        text_color: 0, 0, 0, 1
+        bold: True
+        pos_hint: {"center_x": .50, "center_y": .82}
 
-            MDLabel:
-                text: "Congratulations!"
-                font_style: "Headline"
-                role: "small"
-                halign: "center"
-                theme_text_color: "Custom"
-                text_color: 0, 0, 0, 1
-                bold: True
-                size_hint_y: None
-                height: self.texture_size[1] + dp(10)
+    MDLabel:
+        text: "You have successfully created an account"
+        font_style: "Title"
+        role: "medium"
+        halign: "center"
+        theme_text_color: "Custom"
+        text_color: 0, 0, 0, 1
+        pos_hint: {"center_x": .50, "center_y": .75}
 
-            MDLabel:
-                text: "You have successfully created an account"
-                font_style: "Title"
-                role: "medium"
-                halign: "center"
-                theme_text_color: "Custom"
-                text_color: 0, 0, 0, 1
-                size_hint_y: None
-                height: self.texture_size[1] + dp(5)
+    MDLabel:
+        text: "Your daily net goal is"
+        font_style: "Title"
+        halign: "center"
+        theme_text_color: "Custom"
+        text_color: 0, 0, 0, 1
+        pos_hint: {"center_x": .50, "center_y": .62}
 
-            MDLabel:
-                text: "Your daily net goal is"
-                font_style: "Title"
-                halign: "center"
-                theme_text_color: "Custom"
-                text_color: 0, 0, 0, 1
-                size_hint_y: None
-                height: self.texture_size[1] + dp(5)
+    MDLabel:
+        id: dailycaloriegoal_message
+        text: ""
+        font_style: "Headline"
+        role: "medium"
+        halign: "center"
+        theme_text_color: "Custom"
+        text_color: 0, 0, 0, 1
+        bold: True
+        pos_hint: {"center_x": .50, "center_y": .55}
 
-            MDLabel:
-                id: dailycaloriegoal_message
-                text: ""
-                font_style: "Headline"
-                role: "medium"
-                halign: "center"
-                theme_text_color: "Custom"
-                text_color: 0, 0, 0, 1
-                bold: True
-                size_hint_y: None
-                height: self.texture_size[1] + dp(5)
+    MDLabel:
+        text: "Your current BMI is"
+        font_style: "Title"
+        halign: "center"
+        theme_text_color: "Custom"
+        text_color: 0, 0, 0, 1
+        pos_hint: {"center_x": .50, "center_y": .46}
 
-            MDLabel:
-                text: "Your current BMI is"
-                font_style: "Title"
-                halign: "center"
-                theme_text_color: "Custom"
-                text_color: 0, 0, 0, 1
-                size_hint_y: None
-                height: self.texture_size[1] + dp(5)
+    MDLabel:
+        id: bmi_message
+        text: ""
+        font_style: "Headline"
+        halign: "center"
+        bold: True
+        theme_text_color: "Custom"
+        text_color: 0, 0, 0, 1
+        pos_hint: {"center_x": .50, "center_y": .40}
 
-            MDLabel:
-                id: bmi_message
-                text: ""
-                font_style: "Headline"
-                halign: "center"
-                bold: True
-                theme_text_color: "Custom"
-                text_color: 0, 0, 0, 1
-                size_hint_y: None
-                height: self.texture_size[1] + dp(5)
+    MDLabel:
+        id: bmi_status
+        text: ""
+        font_style: "Title"
+        halign: "center"
+        italic: True
+        theme_text_color: "Custom"
+        text_color: 0, 0, 0, 1
+        pos_hint: {"center_x": .50, "center_y": .35}
 
-            MDLabel:
-                id: bmi_status
-                text: ""
-                font_style: "Title"
-                halign: "center"
-                italic: True
-                theme_text_color: "Custom"
-                text_color: 0, 0, 0, 1
-                size_hint_y: None
-                height: self.texture_size[1] + dp(5)
+    MDLabel:
+        text: "Trust the Process!"
+        font_style: "Headline"
+        role: "large"
+        halign: "center"
+        theme_text_color: "Custom"
+        text_color: 0, 0, 0, 1
+        pos_hint: {"center_x": .50, "center_y": .25}
 
-            MDLabel:
-                text: "Trust the Process!"
-                font_style: "Headline"
-                role: "large"
-                halign: "center"
-                theme_text_color: "Custom"
-                text_color: 0, 0, 0, 1
-                size_hint_y: None
-                height: self.texture_size[1] + dp(10)
+    MDButton:
+        style: "filled"
+        halign: "center"
+        pos_hint: {"center_x": .75, "center_y": .15}
+        radius: [20, 20, 20, 20]
+        on_release:
+            root.go_to_dashboard()
 
-            MDButton:
-                style: "filled"
-                halign: "center"
-                pos_hint: {"center_x": 0.5}
-                radius: [20, 20, 20, 20]
-                on_release:
-                    root.go_to_dashboard()
+        MDButtonText:
+            text: "Continue"
+            font_style: "Title"
+            role: "large"
 
-                MDButtonText:
-                    text: "Continue"
-                    font_style: "Title"
-                    role: "large"
 
 <dashboardScreen>:
     name: "dashboard_screen"
@@ -2549,402 +2372,367 @@ WindowManager:
 
     MDBoxLayout:
         orientation: "vertical"
+        padding: 20
+        spacing: 20
 
-        MDScrollView:
-            do_scroll_x: False
+    MDLabel:
+        text: "Calorie Counter"
+        font_style: "Headline"
+        role: "small"
+        halign: "center"
+        theme_text_color: "Custom"
+        text_color: 0, 0, 0, 1
+        pos_hint: {"center_x": 0.5, "center_y": 0.92}
+        bold: True
+
+    Image:
+        source: "logo.png"
+        size_hint: None, None
+        pos_hint: {"center_x": 0.11, "center_y": 0.93}
+        width: "50dp"
+        height: "50dp"
+
+    MDLabel:
+        text: "Keep track of your food intake"
+        font_style: "Headline"
+        role: "small"
+        halign: "left"
+        theme_text_color: "Custom"
+        text_color: 0, 0, 0, 1
+        pos_hint: {"center_x": .58, "center_y": .83}
+
+    MDBoxLayout:
+        orientation: "vertical"
+        size_hint: None, None
+        size: "145dp", "60dp"
+        pos_hint: {"center_x": 0.26, "center_y": 0.72}
+        md_bg_color: "#008000"
+        padding: 10
+        spacing: 10
+        radius: [30, 30, 30, 30]   # rounded corners
+        elevation: 0
+        md_bg_color: ((0.172, 0.686, 0.161, 1))
+
+        MDLabel:
+            id: calorie_intake
+            halign: "center"
+            text: "Calorie Intake\n0  "
+            theme_text_color: "Custom"
+            text_color: 1, 1, 1, 1
+
+    MDBoxLayout:
+        orientation: "vertical"
+        size_hint: None, None
+        size: "145dp", "60dp"
+        pos_hint: {"center_x": 0.73, "center_y": 0.72}
+        md_bg_color: "#008000"
+        padding: 10
+        spacing: 10
+        radius: [30, 30, 30, 30]   # rounded corners
+        elevation: 0
+        md_bg_color: ((0.172, 0.686, 0.161, 1))
+
+        MDLabel:
+            id: calorie_left
+            halign: "center"
+            text: "Calorie Left\n0  "
+            theme_text_color: "Custom"
+            text_color: 1, 1, 1, 1
+
+    MDLabel:
+        text: "Food Type: "
+        font_style: "Title"
+        role: "medium"
+        halign: "center"
+        theme_text_color: "Custom"
+        text_color: 0, 0, 0, 1
+        pos_hint: {"center_x": .19, "center_y": .63}
+
+    MDTextField:
+        id: foodtype
+        mode: "outlined"
+        size_hint_x: None
+        width: "320dp"
+        bold: True
+        radius: [30, 30, 30, 30]
+        pos_hint: {"center_x": .50, "center_y": .56}
+
+        canvas.after:
+            Color:
+                rgba: 0, 0.8, 0, 1      # green border
+            Line:
+                width: 2.5
+                rounded_rectangle: (self.x, self.y, self.width, self.height, 30)
+
+        MDTextFieldTrailingIcon:
+            icon: "food"
+            theme_icon_color: "Custom"
+            icon_color_normal: 0, 0.8, 0, 1
+            icon_color_focus: 0, 0.8, 0, 1
+
+    MDLabel:
+        text: "Food Quantity(g): "
+        font_style: "Title"
+        role: "medium"
+        halign: "center"
+        theme_text_color: "Custom"
+        text_color: 0, 0, 0, 1
+        pos_hint: {"center_x": .24, "center_y": .48}
+
+
+    MDTextField:
+        id: foodweight
+        mode: "outlined"
+        size_hint_x: None
+        width: "150dp"
+        bold: True
+        radius: [30, 30, 30, 30]
+        pos_hint: {"center_x": .28, "center_y": .41}
+
+        canvas.after:
+            Color:
+                rgba: 0, 0.8, 0, 1      # green border
+            Line:
+                width: 2.5
+                rounded_rectangle: (self.x, self.y, self.width, self.height, 30)
+
+        MDTextFieldTrailingIcon:
+            icon: "scale"
+            theme_icon_color: "Custom"
+            icon_color_normal: 0, 0.8, 0, 1
+            icon_color_focus: 0, 0.8, 0, 1
+
+    MDLabel:
+        text: "Select Meal:"
+        font_style: "Title"
+        role: "medium"
+        halign: "center"
+        theme_text_color: "Custom"
+        text_color: 0, 0, 0, 1
+        pos_hint: {"center_x": .67, "center_y": .48}
+
+
+    MDTextField:
+        id: selectmeal
+        mode: "outlined"
+        size_hint_x: None
+        width: "150dp"
+        bold: True
+        readonly: True
+        radius: [30, 30, 30, 30]
+        pos_hint: {"center_x": .73, "center_y": .41}
+        on_focus:
+            if self.focus: root.open_meal_dropdown(self)
+
+        canvas.after:
+            Color:
+                rgba: 0, 0.8, 0, 1      # green border
+            Line:
+                width: 2.5
+                rounded_rectangle: (self.x, self.y, self.width, self.height, 30)
+
+        MDTextFieldTrailingIcon:
+            icon: "menu-down"
+            theme_icon_color: "Custom"
+            icon_color_normal: 0, 0.8, 0, 1
+            icon_color_focus: 0, 0.8, 0, 1
+
+    # FOOD CALORIE (API result)
+    MDLabel:
+        text: "Food Calorie:"
+        font_style: "Title"
+        role: "medium"
+        halign: "center"
+        theme_text_color: "Custom"
+        text_color: 0, 0, 0, 1
+        pos_hint: {"center_x": .20, "center_y": .33}
+
+    MDTextField:
+        id: foodcalorie
+        text: ""
+        mode: "outlined"
+        size_hint_x: None
+        width: "150dp"
+        bold: True
+        radius: [30, 30, 30, 30]
+        pos_hint: {"center_x": .28, "center_y": .26}
+        readonly: True         # prevents typing
+        focus: False           # no focus/highlight
+        disabled: True
+
+        canvas.after:
+            Color:
+                rgba: 0, 0.8, 0, 1      # green border
+            Line:
+                width: 2.5
+                rounded_rectangle: (self.x, self.y, self.width, self.height, 30)
+
+    BoxLayout:
+        id: action_box
+        orientation: "vertical"
+        spacing: "15dp"
+        size_hint: None, None
+        width: "180dp"
+        height: "160dp"
+        pos_hint: {"center_x": .80, "center_y": .28}
+
+        # GET CALORIES BUTTON (Light Green)
+        MDButton:
+            id: get_calories_btn
+            style: "filled"
+            theme_bg_color: "Custom"
+            radius: [15, 15, 15, 15]
+            md_bg_color: 0.40, 0.84, 0.40, 1   # light green (#66ff66)
+            on_release:
+                root.get_food_calories()
+
+
+            MDButtonText:
+                text: "Get Calories"
+                theme_text_color: "Custom"
+                text_color: 1, 1, 1, 1  # white text
+
+        # SAVE BUTTON (Dark Green)
+        MDButton:
+            id: save_btn
+            style: "filled"
+            theme_bg_color: "Custom"
+            radius: [15, 15, 15, 15]
+            md_bg_color: 0.0, 0.60, 0.0, 1   # darker green
+            on_release:
+                save_btn.md_bg_color = 0, 0.7, 0, 1          # selected → dark green
+                get_calories_btn.md_bg_color = 0.40, 0.84, 0.40, 1 # unselect → light green
+                root.save_food_entry()
+
+            MDButtonIcon:
+                icon: "content-save"
+                theme_icon_color: "Custom"
+                icon_color: 1, 1, 1, 1
+
+            MDButtonText:
+                text: "   Save     "
+                theme_text_color: "Custom"
+                text_color: 1, 1, 1, 1  # white text
+
+    MDBoxLayout:
+        size_hint_y: None
+        height: "80dp"
+        padding: 13
+        md_bg_color: (0.902, 0.902, 0.902, 1)
+
+        MDCard:
+            size_hint: 1, None
+            height: "70dp"
+            radius: [30, 30, 30, 30]
+            md_bg_color: 1, 1, 1, 1
+            style: "outlined"
+            line_color: 0, 0.6, 0, 1
+            stroke_width: 2
+            elevation: 0
+            padding: [20, 8, 20, 8]
 
             MDBoxLayout:
-                orientation: "vertical"
-                padding: dp(20)
-                spacing: dp(16)
-                size_hint_y: None
-                height: self.minimum_height
+                spacing: 30
+                halign: "center"
 
-                MDBoxLayout:
-                    orientation: "horizontal"
-                    size_hint_y: None
-                    height: dp(60)
-                    spacing: dp(10)
+                # --- AI ---
+                BoxLayout:
+                    orientation: "vertical"
+                    spacing: 2
+                    MDIconButton:
+                        icon: "robot"
+                        theme_icon_color: "Custom"
+                        icon_color: 0, 0.6, 0, 1
+                        on_release:
+                            app.root.current = "ai_fitness_buddy_screen"
 
-                    Image:
-                        source: "logo.png"
-                        size_hint: None, None
-                        width: "50dp"
-                        height: "50dp"
-                        pos_hint: {"center_y": 0.5}
+                    MDLabel:
+                        text: "Fitness \nBuddy"
+                        halign: "center"
+                        theme_text_color: "Custom"
+                        text_color: 0, 0.6, 0, 1
+                        theme_font_size: "Custom"
+                        font_size: "10sp"
+
+                # --- Calorie Counter ---
+                BoxLayout:
+                    orientation: "vertical"
+                    spacing: 2
+                    MDIconButton:
+                        icon: "food"
+                        theme_icon_color: "Custom"
+                        icon_color: 0, 0.6, 0, 1
+                        on_release:
+                            root.go_to_calorie_counter()
 
                     MDLabel:
                         text: "Calorie Counter"
-                        font_style: "Headline"
-                        role: "small"
-                        halign: "left"
+                        halign: "center"
                         theme_text_color: "Custom"
-                        text_color: 0, 0, 0, 1
-                        bold: True
-                        pos_hint: {"center_y": 0.5}
+                        text_color: 0, 0.6, 0, 1
+                        theme_font_size: "Custom"
+                        font_size: "10sp"
 
-                MDLabel:
-                    text: "Keep track of your food intake"
-                    font_style: "Headline"
-                    role: "small"
-                    halign: "center"
-                    theme_text_color: "Custom"
-                    text_color: 0, 0, 0, 1
-                    size_hint_y: None
-                    height: self.texture_size[1] + dp(5)
+                MDIconButton:
+                    icon: "home"
+                    style: "filled"
+                    theme_bg_color: "Custom"
+                    md_bg_color: 0, 0.6, 0, 1
+                    theme_icon_size: "Custom"
+                    icon_size: "9000dp"
 
-                MDBoxLayout:
-                    orientation: "horizontal"
-                    size_hint_x: 0.9
-                    pos_hint: {"center_x": 0.5}
-                    size_hint_y: None
-                    height: dp(70)
-                    spacing: dp(10)
+                    size_hint: None, None
+                    size: "60dp", "60dp"
+                    on_release:
+                        app.root.current = "dashboard_screen"
 
-                    MDBoxLayout:
-                        orientation: "vertical"
-                        md_bg_color: ((0.172, 0.686, 0.161, 1))
-                        padding: 10
-                        spacing: 10
-                        radius: [30, 30, 30, 30]
-                        elevation: 0
-
-                        MDLabel:
-                            id: calorie_intake
-                            halign: "center"
-                            text: "Calorie Intake\n0  "
-                            theme_text_color: "Custom"
-                            text_color: 1, 1, 1, 1
-
-                    MDBoxLayout:
-                        orientation: "vertical"
-                        md_bg_color: ((0.172, 0.686, 0.161, 1))
-                        padding: 10
-                        spacing: 10
-                        radius: [30, 30, 30, 30]
-                        elevation: 0
-
-                        MDLabel:
-                            id: calorie_left
-                            halign: "center"
-                            text: "Calorie Left\n0  "
-                            theme_text_color: "Custom"
-                            text_color: 1, 1, 1, 1
-
-                MDLabel:
-                    text: "Food Type: "
-                    font_style: "Title"
-                    role: "medium"
-                    halign: "center"
-                    theme_text_color: "Custom"
-                    text_color: 0, 0, 0, 1
-                    size_hint_y: None
-                    height: self.texture_size[1] + dp(5)
-
-                MDTextField:
-                    id: foodtype
-                    mode: "outlined"
-                    size_hint_x: 0.9
-                    pos_hint: {"center_x": 0.5}
-                    bold: True
-                    radius: [30, 30, 30, 30]
-
-                    canvas.after:
-                        Color:
-                            rgba: 0, 0.8, 0, 1      # green border
-                        Line:
-                            width: 2.5
-                            rounded_rectangle: (self.x, self.y, self.width, self.height, 30)
-
-                    MDTextFieldTrailingIcon:
-                        icon: "food"
-                        theme_icon_color: "Custom"
-                        icon_color_normal: 0, 0.8, 0, 1
-                        icon_color_focus: 0, 0.8, 0, 1
-
-                MDBoxLayout:
-                    orientation: "horizontal"
-                    size_hint_x: 0.9
-                    pos_hint: {"center_x": 0.5}
-                    size_hint_y: None
-                    height: dp(90)
-                    spacing: dp(10)
-
-                    MDBoxLayout:
-                        orientation: "vertical"
-                        spacing: dp(4)
-
-                        MDLabel:
-                            text: "Food Quantity(g): "
-                            font_style: "Title"
-                            role: "medium"
-                            halign: "center"
-                            theme_text_color: "Custom"
-                            text_color: 0, 0, 0, 1
-                            size_hint_y: None
-                            height: self.texture_size[1] + dp(5)
-
-                        MDTextField:
-                            id: foodweight
-                            mode: "outlined"
-                            size_hint_x: 1
-                            bold: True
-                            radius: [30, 30, 30, 30]
-
-                            canvas.after:
-                                Color:
-                                    rgba: 0, 0.8, 0, 1      # green border
-                                Line:
-                                    width: 2.5
-                                    rounded_rectangle: (self.x, self.y, self.width, self.height, 30)
-
-                            MDTextFieldTrailingIcon:
-                                icon: "scale"
-                                theme_icon_color: "Custom"
-                                icon_color_normal: 0, 0.8, 0, 1
-                                icon_color_focus: 0, 0.8, 0, 1
-
-                    MDBoxLayout:
-                        orientation: "vertical"
-                        spacing: dp(4)
-
-                        MDLabel:
-                            text: "Select Meal:"
-                            font_style: "Title"
-                            role: "medium"
-                            halign: "center"
-                            theme_text_color: "Custom"
-                            text_color: 0, 0, 0, 1
-                            size_hint_y: None
-                            height: self.texture_size[1] + dp(5)
-
-                        MDTextField:
-                            id: selectmeal
-                            mode: "outlined"
-                            size_hint_x: 1
-                            bold: True
-                            readonly: True
-                            radius: [30, 30, 30, 30]
-                            on_focus:
-                                if self.focus: root.open_meal_dropdown(self)
-
-                            canvas.after:
-                                Color:
-                                    rgba: 0, 0.8, 0, 1      # green border
-                                Line:
-                                    width: 2.5
-                                    rounded_rectangle: (self.x, self.y, self.width, self.height, 30)
-
-                            MDTextFieldTrailingIcon:
-                                icon: "menu-down"
-                                theme_icon_color: "Custom"
-                                icon_color_normal: 0, 0.8, 0, 1
-                                icon_color_focus: 0, 0.8, 0, 1
-
-                MDBoxLayout:
-                    orientation: "horizontal"
-                    size_hint_x: 0.9
-                    pos_hint: {"center_x": 0.5}
-                    size_hint_y: None
-                    height: dp(90)
-                    spacing: dp(10)
-
-                    MDBoxLayout:
-                        orientation: "vertical"
-                        spacing: dp(4)
-
-                        # FOOD CALORIE (API result)
-                        MDLabel:
-                            text: "Food Calorie:"
-                            font_style: "Title"
-                            role: "medium"
-                            halign: "center"
-                            theme_text_color: "Custom"
-                            text_color: 0, 0, 0, 1
-                            size_hint_y: None
-                            height: self.texture_size[1] + dp(5)
-
-                        MDTextField:
-                            id: foodcalorie
-                            text: ""
-                            mode: "outlined"
-                            size_hint_x: 1
-                            bold: True
-                            radius: [30, 30, 30, 30]
-                            readonly: True         # prevents typing
-                            focus: False           # no focus/highlight
-                            disabled: True
-
-                            canvas.after:
-                                Color:
-                                    rgba: 0, 0.8, 0, 1      # green border
-                                Line:
-                                    width: 2.5
-                                    rounded_rectangle: (self.x, self.y, self.width, self.height, 30)
-
-                    MDBoxLayout:
-                        id: action_box
-                        orientation: "vertical"
-                        spacing: dp(10)
-                        size_hint_x: None
-                        width: dp(160)
-
-                        # GET CALORIES BUTTON (Light Green)
-                        MDButton:
-                            id: get_calories_btn
-                            style: "filled"
-                            theme_bg_color: "Custom"
-                            radius: [15, 15, 15, 15]
-                            md_bg_color: 0.40, 0.84, 0.40, 1   # light green (#66ff66)
-                            on_release:
-                                root.get_food_calories()
-
-                            MDButtonText:
-                                text: "Get Calories"
-                                theme_text_color: "Custom"
-                                text_color: 1, 1, 1, 1  # white text
-
-                        # SAVE BUTTON (Dark Green)
-                        MDButton:
-                            id: save_btn
-                            style: "filled"
-                            theme_bg_color: "Custom"
-                            radius: [15, 15, 15, 15]
-                            md_bg_color: 0.0, 0.60, 0.0, 1   # darker green
-                            on_release:
-                                save_btn.md_bg_color = 0, 0.7, 0, 1          # selected → dark green
-                                get_calories_btn.md_bg_color = 0.40, 0.84, 0.40, 1 # unselect → light green
-                                root.save_food_entry()
-
-                            MDButtonIcon:
-                                icon: "content-save"
-                                theme_icon_color: "Custom"
-                                icon_color: 1, 1, 1, 1
-
-                            MDButtonText:
-                                text: "   Save     "
-                                theme_text_color: "Custom"
-                                text_color: 1, 1, 1, 1  # white text
-
-        MDBoxLayout:
-            size_hint_y: None
-            height: "80dp"
-            padding: 13
-            md_bg_color: (0.902, 0.902, 0.902, 1)
-
-            MDCard:
-                size_hint: 1, None
-                height: "70dp"
-                radius: [30, 30, 30, 30]
-                md_bg_color: 1, 1, 1, 1
-                style: "outlined"
-                line_color: 0, 0.6, 0, 1
-                stroke_width: 2
-                elevation: 0
-                padding: [20, 8, 20, 8]
-
-                MDBoxLayout:
-                    spacing: 30
-                    halign: "center"
-
-                    # --- AI ---
-                    BoxLayout:
-                        orientation: "vertical"
-                        spacing: 2
-                        MDIconButton:
-                            icon: "robot"
-                            theme_icon_color: "Custom"
-                            icon_color: 0, 0.6, 0, 1
-                            on_release:
-                                app.root.current = "ai_fitness_buddy_screen"
-
-                        MDLabel:
-                            text: "Fitness \nBuddy"
-                            halign: "center"
-                            theme_text_color: "Custom"
-                            text_color: 0, 0.6, 0, 1
-                            theme_font_size: "Custom"
-                            font_size: "10sp"
-
-                    # --- Calorie Counter ---
-                    BoxLayout:
-                        orientation: "vertical"
-                        spacing: 2
-                        MDIconButton:
-                            icon: "food"
-                            theme_icon_color: "Custom"
-                            icon_color: 0, 0.6, 0, 1
-                            on_release:
-                                root.go_to_calorie_counter()
-
-                        MDLabel:
-                            text: "Calorie Counter"
-                            halign: "center"
-                            theme_text_color: "Custom"
-                            text_color: 0, 0.6, 0, 1
-                            theme_font_size: "Custom"
-                            font_size: "10sp"
+                # --- ACTIVITY LOG ---
+                BoxLayout:
+                    orientation: "vertical"
+                    spacing: 2
+                    width: dp(80)
 
                     MDIconButton:
-                        icon: "home"
-                        style: "filled"
-                        theme_bg_color: "Custom"
-                        md_bg_color: 0, 0.6, 0, 1
-                        theme_icon_size: "Custom"
-                        icon_size: "9000dp"
-
-                        size_hint: None, None
-                        size: "60dp", "60dp"
+                        icon: "clipboard-text"
+                        theme_icon_color: "Custom"
+                        icon_color: 0, 0.6, 0, 1
                         on_release:
-                            app.root.current = "dashboard_screen"
+                            root.go_to_food_log()
 
-                    # --- ACTIVITY LOG ---
-                    BoxLayout:
-                        orientation: "vertical"
-                        spacing: 2
-                        width: dp(80)
+                    MDLabel:
+                        text: "Activity \nLog"
+                        halign: "center"
+                        theme_text_color: "Custom"
+                        text_color: 0, 0.6, 0, 1
+                        pos_hint: {"center_x": .5}
+                        theme_font_size: "Custom"
+                        font_size: "10sp"
+                        size_hint_x: None
+                        width: dp(60)      # ← give the text proper space
 
-                        MDIconButton:
-                            icon: "clipboard-text"
-                            theme_icon_color: "Custom"
-                            icon_color: 0, 0.6, 0, 1
-                            on_release:
-                                root.go_to_food_log()
+                # --- WELLNESS HUB ---
+                BoxLayout:
+                    orientation: "vertical"
+                    spacing: 2
+                    width: dp(80)
 
-                        MDLabel:
-                            text: "Activity \nLog"
-                            halign: "center"
-                            theme_text_color: "Custom"
-                            text_color: 0, 0.6, 0, 1
-                            pos_hint: {"center_x": .5}
-                            theme_font_size: "Custom"
-                            font_size: "10sp"
-                            size_hint_x: None
-                            width: dp(60)      # ← give the text proper space
+                    MDIconButton:
+                        icon: "spa"
+                        theme_icon_color: "Custom"
+                        icon_color: 0, 0.6, 0, 1
+                        on_release:
+                            root.go_to_exercise_hub()
 
-                    # --- WELLNESS HUB ---
-                    BoxLayout:
-                        orientation: "vertical"
-                        spacing: 2
-                        width: dp(80)
-
-                        MDIconButton:
-                            icon: "spa"
-                            theme_icon_color: "Custom"
-                            icon_color: 0, 0.6, 0, 1
-                            on_release:
-                                root.go_to_exercise_hub()
-
-                        MDLabel:
-                            text: "Wellness Hub"
-                            pos_hint: {"center_x": .5}
-                            halign: "center"
-                            theme_text_color: "Custom"
-                            text_color: 0, 0.6, 0, 1
-                            theme_font_size: "Custom"
-                            font_size: "10sp"
-                            size_hint_x: None
-                            width: dp(60)
+                    MDLabel:
+                        text: "Wellness Hub"
+                        pos_hint: {"center_x": .5}
+                        halign: "center"
+                        theme_text_color: "Custom"
+                        text_color: 0, 0.6, 0, 1
+                        theme_font_size: "Custom"
+                        font_size: "10sp"
+                        size_hint_x: None
+                        width: dp(60)
 
 <FoodLogScreen>
     name: "food_log_screen"
@@ -4925,7 +4713,8 @@ WindowManager:
                 style: "filled"
                 theme_bg_color: "Custom"
                 radius: [30, 30, 30, 30]
-                size_hint_x: 1
+                size_hint_x: None
+                width: "480dp"
                 height: "40dp"
                 md_bg_color: 0.1, 0.7, 0.1, 1   # default
                 on_release:
@@ -4944,7 +4733,8 @@ WindowManager:
                 style: "filled"
                 theme_bg_color: "Custom"
                 radius: [30, 30, 30, 30]
-                size_hint_x: 1
+                size_hint_x: None
+                width: "480dp"
                 height: "40dp"
                 md_bg_color: 0.1, 0.7, 0.1, 1   # default
                 on_release:
@@ -4963,7 +4753,8 @@ WindowManager:
                 style: "filled"
                 theme_bg_color: "Custom"
                 radius: [30, 30, 30, 30]
-                size_hint_x: 1
+                size_hint_x: None
+                width: "480dp"
                 height: "40dp"
                 md_bg_color: 0.1, 0.7, 0.1, 1   # default
                 on_release:
@@ -4982,6 +4773,7 @@ WindowManager:
                 style: "filled"
                 theme_bg_color: "Custom"
                 radius: [30, 30, 30, 30]
+                size_hint_x: None
                 size_hint_x: 1
                 height: "40dp"
                 md_bg_color: 0.1, 0.7, 0.1, 1   # default
@@ -5879,128 +5671,125 @@ WindowManager:
     id: admin_login_screen
     md_bg_color: (0.902, 0.902, 0.902, 1)
 
-    MDScrollView:
-        do_scroll_x: False
+    MDBoxLayout:
+        padding: 20
+        orientation: "vertical"
 
-        MDBoxLayout:
-            orientation: "vertical"
-            padding: dp(20)
-            spacing: dp(16)
-            size_hint_y: None
-            height: self.minimum_height
+    Image:
+        source: "logo.png"
+        size_hint: None, None
+        width: "200dp"
+        height: "200dp"
+        pos_hint: {"center_x": .5, "center_y": .8}
 
-            Image:
-                source: "logo.png"
-                size_hint: None, None
-                width: "150dp"
-                height: "150dp"
-                pos_hint: {"center_x": 0.5}
+    MDLabel:
+        text: "Fitness Go"
+        font_style: "Display"
+        role: "medium"
+        halign: "center"
+        theme_text_color: "Custom"
+        text_color: 0, 0, 0, 1
+        pos_hint: {"center_x": .5, "center_y": .58}
 
-            MDLabel:
-                text: "Fitness Go"
-                font_style: "Display"
-                role: "medium"
-                halign: "center"
-                theme_text_color: "Custom"
-                text_color: 0, 0, 0, 1
-                size_hint_y: None
-                height: self.texture_size[1] + dp(10)
+    MDLabel:
+        text: "Username: "
+        font_style: "Title"
+        role: "small"
+        halign: "center"
+        theme_text_color: "Custom"
+        text_color: 0, 0, 0, 1
+        pos_hint: {"center_x": .18, "center_y": .53}
 
-            MDLabel:
-                text: "Username: "
-                font_style: "Title"
-                role: "small"
-                halign: "center"
-                theme_text_color: "Custom"
-                text_color: 0, 0, 0, 1
-                size_hint_y: None
-                height: self.texture_size[1] + dp(5)
+    MDTextField:
+        id: username_field
+        mode: "outlined"
+        size_hint_x: None
+        width: "300dp"
+        radius: [30, 30, 30, 30]
+        pos_hint: {"center_x": .5, "center_y": .46}
 
-            MDTextField:
-                id: username_field
-                mode: "outlined"
-                size_hint_x: 0.9
-                pos_hint: {"center_x": 0.5}
-                radius: [30, 30, 30, 30]
-                md_bg_color: 0.98, 1, 0.98, 1
-                line_color_normal: 0, 0, 0, 0
-                line_color_focus: 0, 0, 0, 0
-                text_color_normal: 0, 0, 0, 1
-                text_color_focus: 0, 0, 0, 1
+        md_bg_color: 0.98, 1, 0.98, 1
+        line_color_normal: 0, 0, 0, 0
+        line_color_focus: 0, 0, 0, 0
+        text_color_normal: 0, 0, 0, 1
+        text_color_focus: 0, 0, 0, 1
 
-                # ✅ canvas.after MUST come before child widgets
-                canvas.after:
-                    Color:
-                        rgba: 0, 0.8, 0, 1
-                    Line:
-                        width: 2.5
-                        rounded_rectangle: (self.x, self.y, self.width, self.height, 30)
+        # ✅ canvas.after MUST come before child widgets
+        canvas.after:
+            Color:
+                rgba: 0, 0.8, 0, 1
+            Line:
+                width: 2.5
+                rounded_rectangle: (self.x, self.y, self.width, self.height, 30)
 
-                MDTextFieldTrailingIcon:
-                    icon: "account"
-                    theme_icon_color: "Custom"
-                    icon_color_normal: 0, 0.8, 0, 1   # green when unfocused
-                    icon_color_focus: 0, 0.8, 0, 1
+        MDTextFieldTrailingIcon:
+            icon: "account"
+            theme_icon_color: "Custom"
+            icon_color_normal: 0, 0.8, 0, 1   # green when unfocused
+            icon_color_focus: 0, 0.8, 0, 1
 
-            MDLabel:
-                text: "Password: "
-                font_style: "Title"
-                role: "small"
-                halign: "center"
-                theme_text_color: "Custom"
-                text_color: 0, 0, 0, 1
-                size_hint_y: None
-                height: self.texture_size[1] + dp(5)
 
-            MDBoxLayout:
-                orientation: "horizontal"
-                size_hint_x: 0.9
-                pos_hint: {"center_x": 0.5}
-                size_hint_y: None
-                height: dp(56)
-                spacing: dp(4)
+    MDLabel:
+        text: "Password: "
+        font_style: "Title"
+        role: "small"
+        halign: "center"
+        theme_text_color: "Custom"
+        text_color: 0, 0, 0, 1
+        pos_hint: {"center_x": .18, "center_y": .39}
 
-                MDTextField:
-                    id: password_field
-                    mode: "outlined"
-                    size_hint_x: 1
-                    password_mask: "•"
-                    radius: [30, 30, 30, 30]
-                    password: True
-                    md_bg_color: 0.98, 1, 0.98, 1
-                    line_color_normal: 0, 0, 0, 0
-                    line_color_focus: 0, 0, 0, 0
-                    text_color_normal: 0, 0, 0, 1
-                    text_color_focus: 0, 0, 0, 1
+    MDTextField:
+        id: password_field
+        mode: "outlined"
+        size_hint_x: None
+        width: "300dp"
+        pos_hint: {"center_x": .5, "center_y": .32}
+        password_mask: "•"
+        radius: [30, 30, 30, 30]
+        password: True
+        md_bg_color: 0.98, 1, 0.98, 1
+        line_color_normal: 0, 0, 0, 0
+        line_color_focus: 0, 0, 0, 0
+        text_color_normal: 0, 0, 0, 1
+        text_color_focus: 0, 0, 0, 1
 
-                    canvas.after:
-                        Color:
-                            rgba: 0, 0.8, 0, 1
-                        Line:
-                            width: 2.5
-                            rounded_rectangle: (self.x, self.y, self.width, self.height, 30)
+        canvas.after:
+            Color:
+                rgba: 0, 0.8, 0, 1
+            Line:
+                width: 2.5
+                rounded_rectangle: (self.x, self.y, self.width, self.height, 30)
 
-                MDIconButton:
-                    id: login_eye_icon
-                    icon: "eye-off"
-                    size_hint: None, None
-                    size: "32dp", "32dp"
-                    pos_hint: {"center_y": 0.5}
-                    theme_icon_color: "Custom"
-                    icon_color: 0, 0.639, 0, 1
-                    on_release:
-                        root.toggle_password_visibility(password_field, self)
+    MDIconButton:
+        id: login_eye_icon
+        icon: "eye-off"
+        size_hint: None, None
+        size: "32dp", "32dp"
+        pos_hint: {"center_x": 0.83, "center_y": 0.32} # 🔑 alignment fix
+        theme_icon_color: "Custom"
+        icon_color: 0, 0.639, 0, 1
+        on_release:
+            root.toggle_password_visibility(password_field, self)
 
-            MDButton:
-                id: login_button
-                style: "filled"
-                pos_hint: {"center_x": 0.5}
-                on_release:
-                    root.manager.transition.direction = "fade"
-                    root.login_admin()
+    # Show Password Checkbox
+    BoxLayout:
+        size_hint_x: None
+        width: "240dp"
+        height: "40dp"
+        pos_hint: {"center_x": .40, "center_y": .20}
+        spacing: 10
+        orientation: "horizontal"
 
-                MDButtonText:
-                    text: "Log In"
+    MDButton:
+        id: login_button
+        style: "filled"
+        pos_hint: {"center_x": .5, "center_y": .18}
+        on_release:
+            root.manager.transition.direction = "fade"
+            root.login_admin()
+
+        MDButtonText:
+            text: "Log In"
 
 
 <AdminDashboardScreen>:
