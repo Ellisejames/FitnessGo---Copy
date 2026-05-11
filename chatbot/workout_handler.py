@@ -3,7 +3,7 @@
 import json
 from typing import Dict, Any
 import os
-from ml_client import get_ml_workout_plan
+
 
 
 def get_workout_plan(user_id: int, goal: str, level: str, condition: str) -> list:

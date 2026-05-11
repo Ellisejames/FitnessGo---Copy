@@ -379,14 +379,16 @@ class AuthTbl:
             health_condition=specific_condition
         )
 
+        account_status = "Active"
+
         sql = """
             INSERT INTO data_db 
             (Username, Email, Password, Fullname, Age, Gender, Height, Weight,
              ActivityLevel, Goal, DesiredWeight, HasHealthConditions,
              WhatHealthConditions, Photo, BMI, BMIStatus, DailyNetGoal,
-             Created_at, Updated_at)
+             AccountStatus, Created_at, Updated_at)
             VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,
-                    NOW(), NOW())
+                    %s, NOW(), NOW())
         """
 
         values = (
@@ -406,7 +408,8 @@ class AuthTbl:
             photo_bytes,
             bmi,
             bmi_status,
-            daily_goal
+            daily_goal,
+            account_status
         )
 
         try:
@@ -1136,8 +1139,9 @@ class AuthTbl:
                          u.Photo
                   FROM posts_tb p
                            JOIN data_db u ON p.UserId = u.UserId
-                  WHERE p.Audience = 'Public' and u.AccountStatus = 'Active' -- ✔ filter public only
-                  ORDER BY p.Created_at DESC LIMIT 20 -- ✔ keep newest 100 \
+                  WHERE p.Audience = 'Public'
+                    AND (u.AccountStatus = 'Active' OR u.AccountStatus IS NULL)
+                  ORDER BY p.Created_at DESC LIMIT 20
                   """
             self.cursor.execute(sql)
             return self.cursor.fetchall()
@@ -1890,6 +1894,7 @@ class AuthTbl:
             print("❌ DELETE SAVED ARTICLES ERROR:", e)
             self.db.rollback()
             return False
+
 
 
 # Create global instance
