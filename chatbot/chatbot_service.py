@@ -25,7 +25,7 @@ from chatbot.articles_handler import (
     last_article_cache
 )
 import time
-from my_connector import auth_tbl
+from backend.my_connector import auth_tbl
 
 # Set up logging
 logging.basicConfig(level=logging.INFO)

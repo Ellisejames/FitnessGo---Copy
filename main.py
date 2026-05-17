@@ -49,7 +49,7 @@ from kivy.core.image import Image as CoreImage
 import io
 from exercise_image_map import EXERCISE_IMAGE_MAP
 from moderation_utils import has_profanity
-from my_connector import auth_tbl
+from backend.my_connector import auth_tbl
 import requests
 import json
 import os
